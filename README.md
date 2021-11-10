@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# Devy's Basketball World v.1
+Building a UI for a fantasy basketball team creator, trade machine, and eventually a recent box scores section.
+Current functionality includes a team selector and player selector (both under construction).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
