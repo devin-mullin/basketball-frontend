@@ -4,11 +4,11 @@ export const playerSlice = createSlice({
     name: 'players',
     initialState: [],
     reducers: {
-        playerAdd(state, action){
+        playerAdd: (state, action) => {
             state.push(action.payload)
         },
-        playerRemove(state, action){
-            return state.filter(player => player.id !== action.payload)
+        playerRemove: (state, action) => {
+            state.filter(player => player.id !== action.payload)
         }
     }
 })
