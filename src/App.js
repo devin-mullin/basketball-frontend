@@ -1,15 +1,28 @@
-import logo from './logo.svg';
+import { useEffect, useState } from "react"
 import './App.css';
-import TeamSelector from './components/team-selector';
+import NbaTeamsContainer from './components/NbaTeamsContainer'
+import MyTeam from './components/MyTeam'
+import CommunityTeamsContainer from './components/CommunityTeamsContainer'
+import RecentGamesContainer from './components/RecentGamesContainer'
+
 
 function App() {
+  const [teams, setTeams] = useState([])
 
-
+  useEffect(()=> {
+    fetch('http://localhost:3000/teams')
+    .then(res => res.json())
+    .then(data => setTeams(data))
+}, [])
 
   return (
-    <div className="App">
-<TeamSelector/>
-    </div>
+
+      <div className="App">
+        <NbaTeamsContainer/>
+        <MyTeam />
+        <CommunityTeamsContainer />
+        <RecentGamesContainer /> 
+      </div>
   );
 }
 
