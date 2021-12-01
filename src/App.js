@@ -2,26 +2,46 @@ import { useEffect, useState } from "react"
 import './App.css';
 import NbaTeamsContainer from './components/NbaTeamsContainer'
 import MyTeam from './components/MyTeam'
+import Login from './components/Login'
 import CommunityTeamsContainer from './components/CommunityTeamsContainer'
 import RecentGamesContainer from './components/RecentGamesContainer'
-
+import NavBar from "./components/NavBar";
+import { Routes, Route, Outlet, useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { fetchTeams } from './components/redux/teamSlice'
+import { fetchMyTeams } from './components/redux/myTeamSlice'
 
 function App() {
-//   const [teams, setTeams] = useState([])
+  const [user, setUser] = useState([])
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [saveData, setSaveData] = useState({})
 
-//   useEffect(()=> {
-//     fetch('http://localhost:3000/teams')
-//     .then(res => res.json())
-//     .then(data => setTeams(data))
-// }, [])
+  const dispatch = useDispatch()
+    
+
+  useEffect(()=>{
+      dispatch(fetchTeams())
+      dispatch(fetchMyTeams())
+  }, [])
+
 
   return (
 
       <div className="App">
-        <NbaTeamsContainer/>
-        <MyTeam />
-        <CommunityTeamsContainer />
-        <RecentGamesContainer /> 
+      <NavBar />
+      <Routes>          
+      <Route path='/login' 
+          element={<Login setUser={setUser} 
+          loggedIn={loggedIn} 
+          setLoggedIn={setLoggedIn}
+          saveData={saveData} 
+          setSaveData={setSaveData}
+          />} />
+        <Route path='/nba-teams' element={<NbaTeamsContainer/>} />
+        <Route path='/my-team' element={<MyTeam />} />
+        <Route path='/community' element={<CommunityTeamsContainer />} />
+        <Route path='/box-scores' element={<RecentGamesContainer />} /> 
+      </Routes>
       </div>
   );
 }

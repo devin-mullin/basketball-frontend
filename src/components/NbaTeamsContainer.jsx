@@ -1,24 +1,22 @@
 import NbaTeam from './NbaTeam'
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchTeams } from './redux/teamSlice'
-import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
 import { selectAllTeams } from './redux/teamSlice'
+import { useEffect } from 'react'
 
 function NbaTeamsContainer(){
-    const dispatch = useDispatch()
-    
-
-    useEffect(()=>{
-        dispatch(fetchTeams())
-    }, [])
 
     const teams = useSelector(selectAllTeams)
+
+    
 
     return(
         <>
         <h3>nba teams go here</h3>
-        {teams[0]?.map(team=>team.full_name)}
-        <NbaTeam />
+        {teams[0]?.map(team=> <ul key={team.id}>
+            {team.full_name}
+
+            <NbaTeam thisTeam={team} />
+            </ul>)}
         </>
     )
 }

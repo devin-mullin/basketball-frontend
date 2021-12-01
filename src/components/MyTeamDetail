@@ -1,0 +1,19 @@
+import { useEffect } from "react"
+import { fetchMyTeams, myTeamAdd, myTeamRemove, selectMyTeamById } from './redux/myTeamSlice'
+import { useSelector, useDispatch } from "react-redux"
+
+
+function MyTeamDetail(){
+    const dispatch = useDispatch
+
+    const myTeam = useSelector(selectMyTeamById)
+
+    return(
+        <div>
+            <h2>My Teams</h2>
+            
+        </div>
+    )
+}
+
+export default MyTeamDetail
