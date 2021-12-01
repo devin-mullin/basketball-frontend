@@ -7,13 +7,13 @@ import RecentGamesContainer from './components/RecentGamesContainer'
 
 
 function App() {
-  const [teams, setTeams] = useState([])
+//   const [teams, setTeams] = useState([])
 
-  useEffect(()=> {
-    fetch('http://localhost:3000/teams')
-    .then(res => res.json())
-    .then(data => setTeams(data))
-}, [])
+//   useEffect(()=> {
+//     fetch('http://localhost:3000/teams')
+//     .then(res => res.json())
+//     .then(data => setTeams(data))
+// }, [])
 
   return (
 

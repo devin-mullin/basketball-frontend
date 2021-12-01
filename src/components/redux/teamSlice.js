@@ -19,8 +19,20 @@ export const teamSlice = createSlice({
         teamRemove: (state, action) => {
             state.filter(team => team.id !== action.payload)
         }
-    }
+    },
+    extraReducers: (builder) => {
+
+        builder.addCase(fetchTeams.fulfilled, (state, action) => {
+
+            state.push(action.payload)
+        })
+    },
 })
+
+export const selectAllTeams = state => state.teams 
+
+export const selectTeamById = (state, teamId) =>
+state.teams.find(team => team.id === teamId)
 
 export const { teamAdd, teamRemove } = teamSlice.actions
 
