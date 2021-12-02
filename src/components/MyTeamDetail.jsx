@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { useTable } from 'react-table'
 import { useMemo } from 'react'
 
-
 function Table({ columns, data }) {
     // Use the state and functions returned from useTable to build your UI
     const {
@@ -45,8 +44,7 @@ function Table({ columns, data }) {
     )
   }
 
-function NbaTeam( {thisTeam} ){
-
+  function MyTeamDetail( { teamRoster }){
     const columns = useMemo(
         () => [
           {
@@ -56,7 +54,7 @@ function NbaTeam( {thisTeam} ){
                     Header: '',
                     accessor: 'id',
                     Cell: ({ cell }) => (
-                        <button>add to roster</button>
+                        <button>remove from roster</button>
                     )
                 },
                 {
@@ -120,13 +118,13 @@ function NbaTeam( {thisTeam} ){
 
 
     const team = useSelector(selectTeamById)
-    const players = thisTeam.players.map(player => player)
+    const players = teamRoster.players.map(player => player)
     const data = useMemo(()=> players)
   
 
     return(
         <Table columns={columns} data={data} />
     )
-}
+} 
 
-export default NbaTeam
+  export default MyTeamDetail
