@@ -1,11 +1,44 @@
 import { selectTeamById } from './redux/teamSlice'
 import { useSelector } from 'react-redux'
 import { useTable } from 'react-table'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
+import { addPlayer } from './redux/myTeamPlayerSlice'
 
 
 function Table({ columns, data }) {
-    // Use the state and functions returned from useTable to build your UI
+  const [cellValue, setCellValue] = useState('')
+  const [newPlayer, setNewPlayer] = useState({
+    user_team_id: "",
+    player_id: ""
+  })
+
+  const getCellValue = (cell) => {
+    setCellValue(cell.value)
+    setNewPlayer({
+      user_team_id: 1,
+      player_id: cellValue
+    })
+    addPlayer(newPlayer)
+  }
+
+  const addPlayer = (newPlayer) =>{
+    fetch('http://localhost:3000/user_team_players', {
+      method: 'POST', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newPlayer),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+  
+
     const {
       getTableProps,
       getTableBodyProps,
@@ -17,7 +50,6 @@ function Table({ columns, data }) {
       data,
     })
   
-    // Render the UI for your table
     return (
       <table {...getTableProps()}>
         <thead>
@@ -35,7 +67,8 @@ function Table({ columns, data }) {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map(cell => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  return <td onClick={()=> getCellValue(cell)} {...cell.getCellProps()}>
+                    {cell.render('Cell')}</td>
                 })}
               </tr>
             )
@@ -56,7 +89,9 @@ function NbaTeam( {thisTeam} ){
                     Header: '',
                     accessor: 'id',
                     Cell: ({ cell }) => (
-                        <button>add to roster</button>
+                        <button onClick={()=>console.log()}>
+                          add to roster
+                        </button>
                     )
                 },
                 {

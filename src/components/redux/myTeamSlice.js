@@ -1,4 +1,4 @@
-import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchMyTeams = createAsyncThunk(
     'user_teams/getMyTeams', 
@@ -8,6 +8,7 @@ export const fetchMyTeams = createAsyncThunk(
     )
     return response
 }) 
+
 
 export const myTeamSlice = createSlice({
     name: 'myTeams',

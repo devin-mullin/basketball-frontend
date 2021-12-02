@@ -1,8 +1,16 @@
-import { useSelector } from "react-redux"
-import { myTeamAdd, myTeamRemove, selectMyTeams } from './redux/myTeamSlice'
+import { useSelector, useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
+import { myTeamAdd, fetchMyTeams, selectMyTeams } from './redux/myTeamSlice'
 import MyTeamDetail from "./MyTeamDetail"
 
 function MyTeam(){
+    const [playerRefresh, setPlayerRefresh] = useState(true)
+    
+    const dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(fetchMyTeams())
+    }, [playerRefresh])
    
    const myTeams = useSelector(selectMyTeams)
     

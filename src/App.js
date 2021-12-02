@@ -9,7 +9,7 @@ import NavBar from "./components/NavBar";
 import { Routes, Route, Outlet, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { fetchTeams } from './components/redux/teamSlice'
-import { fetchMyTeams } from './components/redux/myTeamSlice'
+import { fetchPlayers } from './components/redux/playerSlice'
 
 function App() {
   const [user, setUser] = useState([])
@@ -18,11 +18,11 @@ function App() {
 
   const dispatch = useDispatch()
     
-
   useEffect(()=>{
       dispatch(fetchTeams())
-      dispatch(fetchMyTeams())
+      dispatch(fetchPlayers())
   }, [])
+
 
 
   return (
@@ -37,10 +37,10 @@ function App() {
           saveData={saveData} 
           setSaveData={setSaveData}
           />} />
-        <Route path='/nba-teams' element={<NbaTeamsContainer/>} />
-        <Route path='/my-team' element={<MyTeam />} />
-        <Route path='/community' element={<CommunityTeamsContainer />} />
-        <Route path='/box-scores' element={<RecentGamesContainer />} /> 
+      <Route path='/nba-teams' element={<NbaTeamsContainer />} />
+      <Route path='/my-team' element={<MyTeam />} />
+      <Route path='/community' element={<CommunityTeamsContainer />} />
+       <Route path='/box-scores' element={<RecentGamesContainer />} /> 
       </Routes>
       </div>
   );

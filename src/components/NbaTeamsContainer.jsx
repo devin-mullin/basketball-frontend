@@ -1,9 +1,9 @@
 import NbaTeam from './NbaTeam'
 import { useSelector } from 'react-redux'
 import { selectAllTeams } from './redux/teamSlice'
-import { useEffect } from 'react'
 
-function NbaTeamsContainer(){
+
+function NbaTeamsContainer({ }){
 
     const teams = useSelector(selectAllTeams)
 
@@ -15,7 +15,9 @@ function NbaTeamsContainer(){
         {teams[0]?.map(team=> <ul key={team.id}>
             {team.full_name}
 
-            <NbaTeam thisTeam={team} />
+            <NbaTeam 
+            thisTeam={team}
+            />
             </ul>)}
         </>
     )
