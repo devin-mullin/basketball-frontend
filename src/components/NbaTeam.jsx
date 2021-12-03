@@ -50,9 +50,7 @@ function Table({ columns, data }) {
       data,
   })
 
-  const handleClick = () => {
-    
-  }
+
   
     return (
       <table {...getTableProps()}>
