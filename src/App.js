@@ -54,7 +54,7 @@ function App() {
           />} />
       <Route exact path='/nba-teams' element={<NbaTeamsContainer />} />
       <Route path ='nba-teams/:id' element={<NbaTeam/>}/>
-      <Route path='/player/:id' element={<Player/>}/>
+      <Route path='/players/:id' element={<Player/>}/>
       <Route path='/my-team' element={<MyTeam />} />
       <Route path='/community' element={<CommunityTeamsContainer />} />
        <Route path='/box-scores' element={<RecentGamesContainer />} /> 

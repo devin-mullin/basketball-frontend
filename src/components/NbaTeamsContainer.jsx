@@ -11,7 +11,7 @@ function NbaTeamsContainer(){
 
     return(
         <>
-        <h3>nba teams go here</h3>
+        <h3>NBA Teams</h3>
         {teams.teams.map(team=> <ul key={team.id}>
             <Link to={{pathname: `/nba-teams/${team.id}`}}         
            >

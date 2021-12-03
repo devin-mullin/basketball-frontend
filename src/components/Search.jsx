@@ -8,7 +8,7 @@ function Search() {
   const [searchText, setSearchText] = useState("") 
 
     const players = useSelector(selectPlayers)
-    const searchResults = players[0].filter(player=> player.name.includes(searchText))
+    const searchResults = players[0]?.filter(player=> player.name.includes(searchText))
 
   const handleChange = (e) => {
     setSearchText(e.target.value)
@@ -17,7 +17,7 @@ function Search() {
     return(
       <form>
       <div className="search">
-          <label>Search for players:</label>
+          <label>Search for players: </label>
           <input
             type="text"
             id="search"
@@ -27,8 +27,13 @@ function Search() {
       </div>
       {searchText.length < 3 ? null:
       <div>
+        <p><strong>Players</strong></p>
         {searchResults.map(result => 
-        <ul><Link to={{pathname: `/players/${result.id}`}} onClick={()=>setSearchText('')}>{result.name}</Link>
+        <ul><Link to=
+            {{pathname: `/players/${result.id}`}} 
+              onClick={()=>setSearchText('')}>
+                {result.name}
+          </Link>
         </ul>)}
       </div>
       }
