@@ -1,7 +1,7 @@
 import { selectAllTeams, selectTeamById } from './redux/teamSlice'
 import { useSelector } from 'react-redux'
 import { useMemo, useState, useEffect } from 'react'
-import Table from 'rc-table'
+
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -11,36 +11,54 @@ function NbaTeam(){
   const id = parseInt(pgNum.id)
   const teams = useSelector(selectAllTeams)   
   const myTeam = teams.teams.filter(team=>team.id === id)
-
-
-   const players = myTeam[0].players.map(player=>player)
-   const columns = [
-     { title: "", dataIndex: "", fixed: true, cell: <button>click me</button>},
-     { title: "Name", dataIndex: "name", fixed: true},
-     { title: "Age", dataIndex: "age", fixed: true},
-     { title: "POS", dataIndex: "pos", fixed: true},
-     { title: "PPG", dataIndex: "pts", fixed: true},
-     { title: "FG%", dataIndex: "fgp", fixed: true},
-     { title: "3P%", dataIndex: "thpp", fixed: true},
-     { title: "FT%", dataIndex: "ftp", fixed: true},
-     { title: "MPG", dataIndex: "mp", fixed: true},
-     { title: "RPG", dataIndex: "trb", fixed: true},
-     { title: "APG", dataIndex: "ast", fixed: true},
-     { title: "SPG", dataIndex: "stl", fixed: true},
-     { title: "BPG", dataIndex: "blk", fixed: true},
-
-  
-  ]
-
-    
+       
     return(
         <div>
           <h3>{myTeam[0].full_name}</h3>
-          <Table id="table"
-            rowKey={id}
-            columns={columns}
-            data={players}
-          />
+         <table>
+          <tr>
+              <th>Name</th>
+              <th>AGE</th>
+              <th>POS</th>
+              <th>PPG</th>
+              <th>FG%</th>
+              <th>3P%</th>
+              <th>FT%</th>
+              <th>MPG</th>
+              <th>RPG</th>
+              <th>APG</th>
+              <th>SPG</th>
+              <th>BPG</th>
+              <th>TOV</th>
+              <th></th>
+          </tr>
+          {
+            myTeam[0].players.map((player)=>(
+          <tr key={player.id}>
+              <td>
+                <Link to=
+                  {{pathname: `/players/${player.id}`}} 
+                   >
+                      {player?.name}
+                </Link>
+                </td>
+              <td>{player?.age}</td>
+              <td>{player?.pos}</td>
+              <td>{player?.pts}</td>
+              <td>{player?.fgp}</td>
+              <td>{player?.thpp}</td>
+              <td>{player?.ftp}</td>
+              <td>{player?.mp}</td>
+              <td>{player?.trb}</td>
+              <td>{player?.ast}</td>
+              <td>{player?.stl}</td>
+              <td>{player?.blk}</td>
+              <td>{player?.tov}</td>
+              <button>add</button>
+          </tr>
+            ))
+          }
+          </table>
         </div>
       
     )

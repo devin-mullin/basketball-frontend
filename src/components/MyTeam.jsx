@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
-import { myTeamAdd, fetchMyTeams, selectMyTeams } from './redux/myTeamSlice'
+import { selectMyTeams } from './redux/myTeamSlice'
 import MyTeamDetail from "./MyTeamDetail"
 
 function MyTeam(){
