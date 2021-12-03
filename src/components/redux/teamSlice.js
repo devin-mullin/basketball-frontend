@@ -1,39 +1,61 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createSelector, createAsyncThunk } from '@reduxjs/toolkit'
+import { connect, Provider, useDispatch, useSelector } from "react-redux";
+
+let initialState = {
+    teams: {
+        id: '',
+        full_name: '',
+        abrv: '',
+        simple_name: '',
+        location: '',
+        players: {
+            id: '',
+            name: '',
+            pos: '',
+            age: '',
+        }
+    }
+    
+    } 
+
+
 
 export const fetchTeams = createAsyncThunk(
-    'teams/getTeams',
-    async (thunkAPI) => {
-        const res = await fetch('http://localhost:3000/teams').then(
-            (data) => data.json()
-        )
-        return res
-    })
+        'teams/getTeams',
+        async (thunkAPI) => {
+            const res = await fetch('http://localhost:3000/teams').then(
+                (data) => data.json()
+            )
+            return res
+        })
 
 export const teamSlice = createSlice({
     name: 'teams',
-    initialState: [],
+    initialState: initialState,
     reducers: {
-        teamAdd: (state, action) => {
-            state.push(action.payload)
+        teamLoad: (state, action) => {
+            state.teams = action.payload
+            },
+         },
+    extraReducers: {
+        [fetchTeams.pending]: (state)=> {
+            state.loading = true
         },
-        teamRemove: (state, action) => {
-            state.filter(team => team.id !== action.payload)
+        [fetchTeams.fulfilled]: (state, {payload})=>{
+            state.loading = false
+            state.teams = payload
+        },
+        [fetchTeams.rejected]: (state)=>{
+            state.loading = false
         }
-    },
-    extraReducers: (builder) => {
+    }
 
-        builder.addCase(fetchTeams.fulfilled, (state, action) => {
-
-            state.push(action.payload)
-        })
-    },
 })
 
 export const selectAllTeams = state => state.teams 
 
-export const selectTeamById = (state, teamId) =>
-state.teams.find(team => team.id === teamId)
+export const selectTeamById = state => state.teams 
 
-export const { teamAdd, teamRemove } = teamSlice.actions
+export const { teamLoad } = teamSlice.actions 
 
 export default teamSlice.reducer

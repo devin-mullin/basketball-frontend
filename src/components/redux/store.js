@@ -10,8 +10,7 @@ export default configureStore({
         players: playerReducer,
         teams: teamReducer,
         myTeams: myTeamReducer,
-        myTeamPlayers: myTeamPlayerReducer,
-        search: searchReducer
-    }
+        myTeamPlayers: myTeamPlayerReducer
+    },
 })
 

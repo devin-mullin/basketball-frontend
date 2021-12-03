@@ -1,6 +1,7 @@
-import { selectTeamById } from './redux/teamSlice'
+import {  } from './redux/teamSlice'
 import { useSelector } from 'react-redux'
 import { useTable } from 'react-table'
+import { useNavigate, Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 
 function Table({ columns, data }) {
@@ -60,7 +61,7 @@ function Table({ columns, data }) {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map(cell => {
-                  return <td onClick={()=>getCellValue(cell)} 
+                  return <td
                   {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
               </tr>
@@ -72,6 +73,8 @@ function Table({ columns, data }) {
   }
 
   function MyTeamDetail( { teamRoster }){
+
+
     const columns = useMemo(
         () => [
           {
@@ -85,8 +88,11 @@ function Table({ columns, data }) {
                     )
                 },
                 {
-                    Header: 'Name',
-                    accessor: 'name'
+                    Header: '',
+                    accessor: 'name',
+                    // Cell: ({link}) => (
+                    //   <Link onClick={() => navigate(`/players/${'id'}`)} />
+                    // )
                 }
             ]
           },
@@ -144,7 +150,6 @@ function Table({ columns, data }) {
       )
 
 
-    const team = useSelector(selectTeamById)
     const players = teamRoster.players.map(player => player)
     const data = useMemo(()=> players)
   

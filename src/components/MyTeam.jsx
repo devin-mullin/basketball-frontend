@@ -6,11 +6,6 @@ import MyTeamDetail from "./MyTeamDetail"
 function MyTeam(){
     const [playerRefresh, setPlayerRefresh] = useState(true)
     
-    const dispatch = useDispatch()
-
-    useEffect(()=>{
-        dispatch(fetchMyTeams())
-    }, [playerRefresh])
    
    const myTeams = useSelector(selectMyTeams)
     
