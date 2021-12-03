@@ -2,25 +2,26 @@ import { selectTeamById } from './redux/teamSlice'
 import { useSelector } from 'react-redux'
 import { useTable } from 'react-table'
 import { useMemo, useState } from 'react'
-import { addPlayer } from './redux/myTeamPlayerSlice'
+
+
 
 
 function Table({ columns, data }) {
-  const [cellValue, setCellValue] = useState('')
+  const [playerRefresh, setPlayerRefresh] = useState(true)
+
   const [newPlayer, setNewPlayer] = useState({
-    user_team_id: "",
+    user_team_id: 1,
     player_id: ""
   })
 
   const getCellValue = (cell) => {
-    setCellValue(cell.value)
-    setNewPlayer({
+    setNewPlayer({ 
       user_team_id: 1,
-      player_id: cellValue
-    })
+      player_id: cell.value })
+    console.log(cell.value);
     addPlayer(newPlayer)
   }
-
+  
   const addPlayer = (newPlayer) =>{
     fetch('http://localhost:3000/user_team_players', {
       method: 'POST', 
@@ -38,8 +39,7 @@ function Table({ columns, data }) {
     });
   }
   
-
-    const {
+  const {
       getTableProps,
       getTableBodyProps,
       headerGroups,
@@ -48,7 +48,11 @@ function Table({ columns, data }) {
     } = useTable({
       columns,
       data,
-    })
+  })
+
+  const handleClick = () => {
+    
+  }
   
     return (
       <table {...getTableProps()}>
@@ -65,9 +69,9 @@ function Table({ columns, data }) {
           {rows.map((row, i) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
+              <tr key={i} {...row.getRowProps()}>
                 {row.cells.map(cell => {
-                  return <td onClick={()=> getCellValue(cell)} {...cell.getCellProps()}>
+                  return <td onClick={()=>getCellValue(cell)} {...cell.getCellProps()}>
                     {cell.render('Cell')}</td>
                 })}
               </tr>
@@ -78,7 +82,7 @@ function Table({ columns, data }) {
     )
   }
 
-function NbaTeam( {thisTeam} ){
+function NbaTeam( {thisTeam, setPlayerRefresh } ){
 
     const columns = useMemo(
         () => [
@@ -87,12 +91,12 @@ function NbaTeam( {thisTeam} ){
             columns: [
                 {
                     Header: '',
-                    accessor: 'id',
-                    Cell: ({ cell }) => (
-                        <button onClick={()=>console.log()}>
+                    accessor: "id",
+                    Cell:
+                        <button>
                           add to roster
                         </button>
-                    )
+                    
                 },
                 {
                     Header: 'Name',
@@ -156,7 +160,7 @@ function NbaTeam( {thisTeam} ){
 
     const team = useSelector(selectTeamById)
     const players = thisTeam.players.map(player => player)
-    const data = useMemo(()=> players)
+    const data = players
   
 
     return(

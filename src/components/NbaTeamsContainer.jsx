@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { selectAllTeams } from './redux/teamSlice'
 
 
-function NbaTeamsContainer({ }){
+function NbaTeamsContainer(){
 
     const teams = useSelector(selectAllTeams)
 

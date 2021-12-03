@@ -1,10 +1,36 @@
 import { selectTeamById } from './redux/teamSlice'
 import { useSelector } from 'react-redux'
 import { useTable } from 'react-table'
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 
 function Table({ columns, data }) {
-    // Use the state and functions returned from useTable to build your UI
+  const [delPlayer, setDelPlayer] = useState({
+    user_team_id: 1,
+    id: ""
+  })  
+  const getCellValue = (cell) => {
+    setDelPlayer({ 
+      user_team_id: 1,
+      id: cell.value })
+      console.log(cell.row.id);
+    waivePlayer(delPlayer);
+    
+  }
+
+  const waivePlayer = (delPlayer) =>{
+    fetch(`http://localhost:3000/user_team_players/${delPlayer.id}`, {
+      method: 'DELETE', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(delPlayer),
+    })
+    .then(response => response.json())
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
+
     const {
       getTableProps,
       getTableBodyProps,
@@ -16,7 +42,7 @@ function Table({ columns, data }) {
       data,
     })
   
-    // Render the UI for your table
+  
     return (
       <table {...getTableProps()}>
         <thead>
@@ -34,7 +60,8 @@ function Table({ columns, data }) {
             return (
               <tr {...row.getRowProps()}>
                 {row.cells.map(cell => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  return <td onClick={()=>getCellValue(cell)} 
+                  {...cell.getCellProps()}>{cell.render('Cell')}</td>
                 })}
               </tr>
             )
