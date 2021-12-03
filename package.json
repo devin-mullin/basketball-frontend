@@ -7,6 +7,7 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "antd": "^4.17.2",
     "axios": "^0.24.0",
     "rc-table": "^7.21.0",
     "react": "^17.0.2",
@@ -48,6 +49,9 @@
     ]
   },
   "devDependencies": {
-    "redux-search": "^2.5.0"
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.4",
+    "redux-search": "^2.5.0",
+    "tailwindcss": "^2.2.19"
   }
 }

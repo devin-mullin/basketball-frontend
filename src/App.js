@@ -8,11 +8,13 @@ import Player from './components/Player'
 import CommunityTeamsContainer from './components/CommunityTeamsContainer'
 import RecentGamesContainer from './components/RecentGamesContainer'
 import NavBar from "./components/NavBar";
+import Search from "./components/Search"
 import { Routes, Route, Outlet, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTeams, selectTeamById, selectAllTeams } from './components/redux/teamSlice'
 import { fetchPlayers } from './components/redux/playerSlice'
 import { fetchMyTeams } from './components/redux/myTeamSlice'
+import "tailwindcss/tailwind.css"
 
 function App() {
   const [user, setUser] = useState([])
@@ -41,6 +43,7 @@ function App() {
 
       <div className="App">
       <NavBar />
+      <Search />
       <Routes>          
       <Route path='/login' 
           element={<Login setUser={setUser} 
