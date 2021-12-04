@@ -6,9 +6,8 @@ import { Link } from 'react-router-dom'
 
 function Search() {
   const [searchText, setSearchText] = useState("") 
-
-    const players = useSelector(selectPlayers)
-    const searchResults = players[0]?.filter(player=> player.name.includes(searchText))
+  const players = useSelector(selectPlayers)
+  const searchResults = players[0]?.filter(player=> player.name.includes(searchText))
 
   const handleChange = (e) => {
     setSearchText(e.target.value)

@@ -1,13 +1,32 @@
 import { selectMyTeams } from './redux/myTeamSlice'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { useState } from 'react'
 
 
   function MyTeamDetail(){
-
+    const [playerId, setPlayerId] = useState("")
     const team = useSelector(selectMyTeams)
     const myTeam = team[0][0].players
+    const dispatch = useDispatch()
+
+    const handleClick = (e) => {
+      const id = parseInt(e.target.id)
+      dispatch(selectMyTeams)
+      console.log({
+        user_team_id: 1,
+        player_id: id
+      });
+      fetch('http://localhost:3000/user_player_del', { 
+        method: 'DELETE',
+        body: JSON.stringify({
+          user_team_id: 1,
+          player_id: id
+        }),
+      })
+      .then(r=>r.json())
+    }
+    console.log(team);
 
     return(
       <>
@@ -55,7 +74,7 @@ import { useState } from 'react'
               <td>{player?.stl}</td>
               <td>{player?.blk}</td>
               <td>{player?.tov}</td>
-              <th><button>waive</button></th>
+              <th><button id={player.id} onClick={handleClick}>waive</button></th>
           </tr>
             ))
           }
