@@ -1,18 +1,24 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { selectPlayers } from './redux/playerSlice'
+import { selectPlayers, fetchPlayers } from './redux/playerSlice'
 import { selectMyTeams } from './redux/myTeamSlice'
+import { useEffect } from 'react'
 
 function Player(){
+    let dispatch = useDispatch()
     
+    useEffect(()=>{
+        dispatch(fetchPlayers())  
+      }, [])
+
+
     const pgNum = useParams()
     const id = parseInt(pgNum.id)
     const players = useSelector(selectPlayers)   
-    const thisPlayer = players[0].filter(player=> player.id === id)
+    const thisPlayer = players[0].find(player=> player.id === id)
     
-    let dispatch = useDispatch()
-    
-    const handleClick = () =>{
+ 
+    const handleClick = (e) =>{
         dispatch(selectMyTeams)
         fetch('http://localhost:3000/user_team_players', {
             method: 'POST',
@@ -21,13 +27,11 @@ function Player(){
             },
             body: JSON.stringify({
                 user_team_id: 1,
-                player_id: id
+                player_id: e.target.id
             }),
         })
             .then(response => response.json())
-            .then(data => {
-            console.log('Success:', data);
-            })
+            .then((data)=> console.log(data))
             .catch((error) => {
             console.error('Error:', error);
             });
@@ -37,10 +41,10 @@ function Player(){
         <>
         <div>
             <h3>
-                {thisPlayer[0]?.name}
+                {thisPlayer?.name}
             </h3>
             <h4>
-                {thisPlayer[0]?.tm}
+                {thisPlayer?.tm}
             </h4>
         </div>
         <table>
@@ -59,21 +63,22 @@ function Player(){
                 <th>TOV</th>
             </tr>
             <tr>
-                <td>{thisPlayer[0]?.age}</td>
-                <td>{thisPlayer[0]?.pos}</td>
-                <td>{thisPlayer[0]?.pts}</td>
-                <td>{thisPlayer[0]?.fgp}</td>
-                <td>{thisPlayer[0]?.thpp}</td>
-                <td>{thisPlayer[0]?.ftp}</td>
-                <td>{thisPlayer[0]?.mp}</td>
-                <td>{thisPlayer[0]?.trb}</td>
-                <td>{thisPlayer[0]?.ast}</td>
-                <td>{thisPlayer[0]?.stl}</td>
-                <td>{thisPlayer[0]?.blk}</td>
-                <td>{thisPlayer[0]?.tov}</td>
+                <td>{thisPlayer?.age}</td>
+                <td>{thisPlayer?.pos}</td>
+                <td>{thisPlayer?.pts}</td>
+                <td>{thisPlayer?.fgp}</td>
+                <td>{thisPlayer?.thpp}</td>
+                <td>{thisPlayer?.ftp}</td>
+                <td>{thisPlayer?.mp}</td>
+                <td>{thisPlayer?.trb}</td>
+                <td>{thisPlayer?.ast}</td>
+                <td>{thisPlayer?.stl}</td>
+                <td>{thisPlayer?.blk}</td>
+                <td>{thisPlayer?.tov}</td>
+                <button id={thisPlayer?.id} onClick={handleClick}>add</button>
             </tr>
             </table>
-            <button onClick={handleClick}>add player to team</button>
+            
         </>
     )
 }

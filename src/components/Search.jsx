@@ -7,12 +7,16 @@ import { Link } from 'react-router-dom'
 function Search() {
   const [searchText, setSearchText] = useState("") 
   const players = useSelector(selectPlayers)
-  const searchResults = players[0]?.filter(player=> player.name.includes(searchText))
+  
+  const searchResults = players[0]?.filter(player=> 
+    player.name.toLowerCase().includes(searchText.toLowerCase()) 
+    || player.name.toLowerCase().startsWith(searchText.toLowerCase()) 
+    || player.name.toLowerCase() === searchText.toLowerCase())
 
   const handleChange = (e) => {
     setSearchText(e.target.value)
   }
-
+  console.log(players[0]);
     return(
       <form>
       <div className="search">
@@ -24,14 +28,14 @@ function Search() {
             onChange={handleChange}
             />
       </div>
-      {searchText.length < 3 ? null:
+      {searchText.length < 2 ? null:
       <div>
         <p><strong>Players</strong></p>
-        {searchResults.map(result => 
+        {searchResults?.map(result => 
         <ul><Link to=
             {{pathname: `/players/${result.id}`}} 
               onClick={()=>setSearchText('')}>
-                {result.name}
+                {result.name} <span> | </span> {result.tm}
           </Link>
         </ul>)}
       </div>

@@ -1,7 +1,15 @@
 import { Link, Outlet } from 'react-router-dom'
 import Search from './Search'
+import { useDispatch } from 'react-redux'
+import { fetchTeams } from './redux/teamSlice'
+import { useEffect } from 'react'
 
 function NavBar(){
+  let dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(fetchTeams())    
+}, [dispatch])
 
     return(
         <div>

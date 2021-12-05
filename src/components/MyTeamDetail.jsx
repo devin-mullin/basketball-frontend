@@ -1,7 +1,7 @@
-import { selectMyTeams } from './redux/myTeamSlice'
+import { selectMyTeams, fetchMyTeams } from './redux/myTeamSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect } from 'react'
 
 
   function MyTeamDetail(){
@@ -11,22 +11,23 @@ import { useState } from 'react'
 
     const handleClick = (e) => {
       const id = parseInt(e.target.id)
-      dispatch(selectMyTeams)
       const myTeamPlayers = team[0][0].user_team_players
-      const waivedPlayer = myTeamPlayers.filter(player => player.id === id);
-      console.log();
-      fetch(`http://localhost:3000/user_team_players/${waivedPlayer[0].id}`, { 
+      const waivedPlayer = myTeamPlayers.find(player => player.player_id === id);
+      dispatch(selectMyTeams) 
+      fetch(`http://localhost:3000/user_team_players/${waivedPlayer.id}`, { 
         method: 'DELETE',
         body: JSON.stringify({
           user_team_id: 1,
           player_id: id,
-          id: waivedPlayer[0].id
+          id: waivedPlayer[0]?.id
         }),
       })
       .then(r=>r.json())
-      .then((data)=> window.location.reload(true))
+      .then(dispatch(selectMyTeams),
+      window.location.reload(true)
+      )
     }
-    console.log(team);
+
 
     return(
       <>
@@ -41,6 +42,7 @@ import { useState } from 'react'
       <table>
           <tr>
               <th>Name</th>
+              <th>TEAM</th>
               <th>AGE</th>
               <th>POS</th>
               <th>PPG</th>
@@ -62,6 +64,7 @@ import { useState } from 'react'
               {{pathname: `/players/${player.id}`}}>
                 {player?.name}
             </Link>
+              <td>{player?.tm}</td>
               <td>{player?.age}</td>
               <td>{player?.pos}</td>
               <td>{player?.pts}</td>
@@ -74,7 +77,7 @@ import { useState } from 'react'
               <td>{player?.stl}</td>
               <td>{player?.blk}</td>
               <td>{player?.tov}</td>
-              <th><button id={player.id} onClick={handleClick}>waive</button></th>
+              <th><button id={player?.id} onClick={handleClick}>waive</button></th>
           </tr>
             ))
           }

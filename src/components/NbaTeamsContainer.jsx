@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 function NbaTeamsContainer(){
 
-    const teams = useSelector((state)=>state.teams)
+    const teams = useSelector(selectAllTeams)
 
 
     return(
