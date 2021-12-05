@@ -14,11 +14,12 @@ export const myTeamSlice = createSlice({
     name: 'myTeams',
     initialState: [],
     reducers: {
-        myTeamAdd: (state, action) => {
-            state.myTeams.push(action.payload)
+        add: (state, action) => {
+            state.push(action.payload)
         },
-        myTeamRemove: (state, action) => {
-            state.myTeams.filter(team => team.id !== action.payload)
+        remove: (state, action) => {
+            state.filter(team => team.id !== action.payload)
+            return state
         }
     },
     extraReducers: (builder) => {
@@ -30,7 +31,7 @@ export const myTeamSlice = createSlice({
     },
 })
     
-export const {myTeamAdded, myTeamUpdated} = myTeamSlice.actions
+export const {add, remove} = myTeamSlice.actions
 
 export const selectMyTeams = state=>state.myTeams
 

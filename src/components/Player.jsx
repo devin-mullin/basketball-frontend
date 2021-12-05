@@ -1,17 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { selectPlayers, fetchPlayers } from './redux/playerSlice'
-import { selectMyTeams } from './redux/myTeamSlice'
+import { add } from './redux/myTeamPlayerSlice'
 import { useEffect } from 'react'
 
 function Player(){
     let dispatch = useDispatch()
     
-    useEffect(()=>{
-        dispatch(fetchPlayers())  
-      }, [])
-
-
     const pgNum = useParams()
     const id = parseInt(pgNum.id)
     const players = useSelector(selectPlayers)   
@@ -19,7 +14,6 @@ function Player(){
     
  
     const handleClick = (e) =>{
-        dispatch(selectMyTeams)
         fetch('http://localhost:3000/user_team_players', {
             method: 'POST',
             headers: {
@@ -31,7 +25,10 @@ function Player(){
             }),
         })
             .then(response => response.json())
-            .then((data)=> console.log(data))
+            .then(dispatch(add({
+                player_id: id,
+                user_team_id: 1
+            })))
             .catch((error) => {
             console.error('Error:', error);
             });

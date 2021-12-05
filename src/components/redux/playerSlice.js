@@ -29,11 +29,6 @@ export const playerSlice = createSlice({
     },
 })
 
-const mapStateToProps = (state) => {
-    return {
-      categories: state.playerReducer
-    }
- }
 
 export const { playerAdd, playerRemove } = playerSlice.actions
 

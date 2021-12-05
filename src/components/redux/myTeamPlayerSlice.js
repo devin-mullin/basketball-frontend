@@ -14,11 +14,11 @@ export const getTeamPlayers = createAsyncThunk(
     name: 'myTeamPlayers',
     initialState: [],
     reducers: {
-        myTeamPlayersAdd: (state, action) => {
-            state.myTeamPlayers.push(action.payload)
+        add: (state, action) => {
+            state.push(action.payload)
         },
-        myTeamPlayersRemove: (state, action) => {
-            state.myTeams.filter(team => team.id !== action.payload)
+        remove: (state, action) => {
+            state.filter(player => player.id !== action.payload)
         }
     },
     extraReducers: (builder) => {
@@ -29,5 +29,7 @@ export const getTeamPlayers = createAsyncThunk(
       })
   },
 })
+
+export const { add, remove } = myTeamPlayerSlice.actions
 
 export default myTeamPlayerSlice.reducer

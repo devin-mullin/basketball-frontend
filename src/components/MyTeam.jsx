@@ -3,10 +3,8 @@ import { useEffect, useState } from "react"
 import { selectMyTeams } from './redux/myTeamSlice'
 import MyTeamDetail from "./MyTeamDetail"
 
-function MyTeam(){
-    const [playerRefresh, setPlayerRefresh] = useState(true)
-    
-   
+function MyTeam(){ 
+
    const myTeams = useSelector(selectMyTeams)
     
     return(

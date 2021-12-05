@@ -1,9 +1,9 @@
 
-function Login({ setUser, loggedIn, setLoggedIn, saveData, setSaveData }) {
+function Login({ user, setUser, loggedIn, setLoggedIn, saveData, setSaveData }) {
     
 
     function userLogIn(saveData){
-        fetch("/login", {
+        fetch("http://localhost:3000/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -13,8 +13,9 @@ function Login({ setUser, loggedIn, setLoggedIn, saveData, setSaveData }) {
         .then(r => r.json())
         .then( (user) => {
           setUser(user)
-        user.username === saveData.username? setLoggedIn(!loggedIn) : alert(user.error)
-        })
+        user.username === saveData.username? setLoggedIn(!loggedIn) : alert('invalid username and/or password. try again!')
+        alert('welcome to the GREATEST FANTASY BASKETBALL APP ON EARTH')
+      })
     }
     
     function doLogOut(){
@@ -38,8 +39,15 @@ function Login({ setUser, loggedIn, setLoggedIn, saveData, setSaveData }) {
             [e.target.name]: e.target.value
         })
     }
-
+    
     return(
+      <>
+      { loggedIn ? 
+      <div>
+        <p>glad to see basketball is your favorite sport, too, {user.username}</p>
+        <button onClick={doLogOut}>Log Out</button> 
+      </div>  
+        :
         <form className="m-5 5 5 5 text-center" onSubmit={e => logInData(e)}>
         <label>
             Username:
@@ -52,7 +60,13 @@ function Login({ setUser, loggedIn, setLoggedIn, saveData, setSaveData }) {
         </label>
         <input type="submit" value="Log In"/>
         </form>
+      }
+        </>
     )
+
+      
+
+    
 }
 
 export default Login 

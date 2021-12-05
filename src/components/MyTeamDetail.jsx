@@ -1,4 +1,5 @@
 import { selectMyTeams, fetchMyTeams } from './redux/myTeamSlice'
+import { remove } from './redux/myTeamPlayerSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -13,7 +14,6 @@ import { useEffect } from 'react'
       const id = parseInt(e.target.id)
       const myTeamPlayers = team[0][0].user_team_players
       const waivedPlayer = myTeamPlayers.find(player => player.player_id === id);
-      dispatch(selectMyTeams) 
       fetch(`http://localhost:3000/user_team_players/${waivedPlayer.id}`, { 
         method: 'DELETE',
         body: JSON.stringify({
@@ -23,9 +23,10 @@ import { useEffect } from 'react'
         }),
       })
       .then(r=>r.json())
-      .then(dispatch(selectMyTeams),
-      window.location.reload(true)
-      )
+      .then(data=>{
+        dispatch(remove(id),
+        window.location.reload(true))
+      })
     }
 
 

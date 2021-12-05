@@ -1,23 +1,6 @@
 import { createSlice, createSelector, createAsyncThunk } from '@reduxjs/toolkit'
-import { connect, Provider, useDispatch, useSelector } from "react-redux";
 
-let initialState = {
-    teams: {
-        id: '',
-        full_name: '',
-        abrv: '',
-        simple_name: '',
-        location: '',
-        players: {
-            id: '',
-            name: '',
-            pos: '',
-            age: '',
-        }
-    }
-    
-    } 
-
+let initialState = []
 
 
 export const fetchTeams = createAsyncThunk(
@@ -34,20 +17,14 @@ export const teamSlice = createSlice({
     initialState: initialState,
     reducers: {
         teamLoad: (state, action) => {
-            state.teams = action.payload
+            state = action.payload
             },
          },
-    extraReducers: {
-        [fetchTeams.pending]: (state)=> {
-            state.loading = true
-        },
-        [fetchTeams.fulfilled]: (state, {payload})=>{
-            state.loading = false
-            state.teams = payload
-        },
-        [fetchTeams.rejected]: (state)=>{
-            state.loading = false
-        }
+    extraReducers: (builder) => {
+        builder.addCase(fetchTeams.fulfilled, (state, action) => {
+
+            state.push(action.payload)
+        })
     }
 
 })

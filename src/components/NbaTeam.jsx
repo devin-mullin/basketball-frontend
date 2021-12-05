@@ -9,15 +9,11 @@ import { useEffect } from 'react'
 function NbaTeam(){
   const dispatch = useDispatch()
 
-  useEffect(()=>{
-    dispatch(fetchTeams)
-  },[])
-
   
   const teams = useSelector(selectAllTeams) 
   const pgNum = useParams()
   const id = parseInt(pgNum.id)
-  const myTeam = teams.teams.find(team=>team.id === id)
+  const myTeam = teams[0].find(team=>team.id === id)
 
   const handleClick = (e) =>{
    
