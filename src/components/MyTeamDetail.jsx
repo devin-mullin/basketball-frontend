@@ -5,7 +5,6 @@ import { useState } from 'react'
 
 
   function MyTeamDetail(){
-    const [playerId, setPlayerId] = useState("")
     const team = useSelector(selectMyTeams)
     const myTeam = team[0][0].players
     const dispatch = useDispatch()
@@ -13,18 +12,19 @@ import { useState } from 'react'
     const handleClick = (e) => {
       const id = parseInt(e.target.id)
       dispatch(selectMyTeams)
-      console.log({
-        user_team_id: 1,
-        player_id: id
-      });
-      fetch('http://localhost:3000/user_player_del', { 
+      const myTeamPlayers = team[0][0].user_team_players
+      const waivedPlayer = myTeamPlayers.filter(player => player.id === id);
+      console.log();
+      fetch(`http://localhost:3000/user_team_players/${waivedPlayer[0].id}`, { 
         method: 'DELETE',
         body: JSON.stringify({
           user_team_id: 1,
-          player_id: id
+          player_id: id,
+          id: waivedPlayer[0].id
         }),
       })
       .then(r=>r.json())
+      .then((data)=> window.location.reload(true))
     }
     console.log(team);
 
