@@ -30,7 +30,9 @@ export const myTeamSlice = createSlice({
         })
     },
 })
-    
+
+
+
 export const {add, remove} = myTeamSlice.actions
 
 export const selectMyTeams = (state) => state.myTeams

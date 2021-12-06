@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import './App.css';
 import NbaTeamsContainer from './components/NbaTeamsContainer'
 import NbaTeam from './components/NbaTeam'
 import MyTeam from './components/MyTeam'
@@ -10,22 +9,25 @@ import CommunityTeamsContainer from './components/CommunityTeamsContainer'
 import RecentGamesContainer from './components/RecentGamesContainer'
 import NavBar from "./components/NavBar";
 import Search from "./components/Search"
-import { Routes, Route, useLocation } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { fetchTeams } from './components/redux/teamSlice'
 import { fetchPlayers } from './components/redux/playerSlice'
 import { fetchMyTeams } from './components/redux/myTeamSlice'
 import { getTeamPlayers } from './components/redux/myTeamPlayerSlice'
 import appbanner1 from './components/img/appbanner1.jpeg'
-import "tailwindcss/tailwind.css"
+
 
 function App() {
   const [user, setUser] = useState([])
   const [loggedIn, setLoggedIn] = useState(null)
+  const [ locationKeys, setLocationKeys ] = useState([])
+
 
 
   const dispatch = useDispatch()
-  const location = useLocation()
+  const navigate = useNavigate()
+
 
   useEffect(()=>{
       dispatch(fetchTeams())    
@@ -43,20 +45,47 @@ function App() {
     dispatch(getTeamPlayers())
   }, [dispatch])
 
+  // useEffect(() => {
+  //   return history.listen(location => {
+  //     if (history.action === 'PUSH') {
+  //       setLocationKeys([ location.key ])
+  //     }
+  
+  //     if (history.action === 'POP') {
+  //       if (locationKeys[1] === location.key) {
+  //         setLocationKeys(([ _, ...keys ]) => keys)
+  
+  //       } else {
+  //         setLocationKeys((keys) => [ location.key, ...keys ])
+
+  //       }
+  //     }
+  //   })
+  // }, [ locationKeys, ])
+
+
   useEffect(()=>{
-    fetch('/auth')
+    fetch('/me')
     .then(res=>{
       if(res.ok){
-       res.json().then(user=>setUser(user)) 
+       res.json().then((user)=>setUser(user)) 
       }
     })
-  })
+  }, [])
+
 
  if(!user) return <Login setUser={setUser}/>
 
   return (
 
-      <div className="App">
+      <div className="bg-light">
+      <div align="center">
+        <img className="border border-info" 
+        src={appbanner1} 
+        alt="devy league fantasy basketball version 1.0"
+        onClick={()=>navigate('/')}
+        />
+      </div>
       <Login 
           user={user}
           setUser={setUser} 
@@ -64,8 +93,8 @@ function App() {
           setLoggedIn={setLoggedIn}
           />
       <br />
-      <img src={appbanner1} alt="devy league fantasy basketball version 1.0"/>
       <NavBar loggedIn={loggedIn}/>
+      <Search />
       <Routes>           
       <Route path='/sign-up' element={<CreateUser/>}/>
       <Route exact path='/nba-teams' element={<NbaTeamsContainer />} />
@@ -77,7 +106,7 @@ function App() {
         <Route exact path='/players' component={Player}/>
         <Route path='/players/:id' component={Player}/>
       </Routes>
-      <Search />
+      <br/>
       </div>
   );
 }

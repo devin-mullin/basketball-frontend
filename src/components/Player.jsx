@@ -4,6 +4,7 @@ import { selectPlayers, fetchPlayers } from './redux/playerSlice'
 import { add } from './redux/myTeamPlayerSlice'
 import { useState } from 'react'
 import config from './config'
+import { Table, Button } from 'react-bootstrap'
 
 
 function Player(){
@@ -41,7 +42,7 @@ function Player(){
 
     // video
 
-    const searchTerms = `${thisPlayer?.name} + NBA highlights` 
+    const searchTerms = `${thisPlayer?.name} + NBA 2021 highlights` 
     const API_KEY = config.API_KEY
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${searchTerms}&key=${API_KEY}`;
    
@@ -55,14 +56,16 @@ function Player(){
     return(
         <>
         <div>
-            <h3>
+            <h3 align="center">
                 {thisPlayer?.name}
             </h3>
-            <h4>
+            <h4 align="center">
                 {thisPlayer?.tm}
             </h4>
         </div>
-        <table>
+        <Table striped bordered hover size="sm"
+        className="m-5 5 5 5"
+        >
             <tr>
                 <th>AGE</th>
                 <th>POS</th>
@@ -90,11 +93,16 @@ function Player(){
                 <td>{thisPlayer?.stl}</td>
                 <td>{thisPlayer?.blk}</td>
                 <td>{thisPlayer?.tov}</td>
-                <button id={thisPlayer?.id} onClick={handleClick}>add</button>
+                <Button variant="outline-success" 
+                    id={thisPlayer?.id} 
+                    onClick={handleClick}>
+                    add
+                </Button>
             </tr>
-            </table>
+            </Table>
  
-        <div>
+        <div align="center">
+            <h4>Player Highlights:</h4>
             <iframe width="50%" height="500px" class="youtube"/>
         </div>
         </>

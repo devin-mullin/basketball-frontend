@@ -2,7 +2,7 @@ import { selectMyTeams, selectMyTeamById, fetchMyTeams } from './redux/myTeamSli
 import { remove } from './redux/myTeamPlayerSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { Table, Button } from 'react-bootstrap'
 
 
 
@@ -10,7 +10,10 @@ import { useEffect } from 'react'
     const team = useSelector(selectMyTeams)
     const myTeam = team[0][0].players
     const dispatch = useDispatch()
-    console.log(team[0].find(team=>team.user_id === user.id));
+
+    // console.log(team[0].find(team=>team.user_id === user.id));
+   
+
     const handleClick = (e) => {
       const id = parseInt(e.target.id)
       const myTeamPlayers = team[0][0].user_team_players
@@ -44,7 +47,9 @@ import { useEffect } from 'react'
               
           </h4>
       </div>
-      <table>
+      <Table striped bordered hover size="sm"
+      className="mt-5 5 5 5"
+      >
           <tr>
               <th>Name</th>
               <th>TEAM</th>
@@ -65,7 +70,7 @@ import { useEffect } from 'react'
           {
             myTeam.map((player)=>(
           <tr key={player.id}>
-            <Link to=
+            <Link className="border-0 text-primary" to=
               {{pathname: `/players/${player.id}`}}>
                 {player?.name}
             </Link>
@@ -82,11 +87,16 @@ import { useEffect } from 'react'
               <td>{player?.stl}</td>
               <td>{player?.blk}</td>
               <td>{player?.tov}</td>
-              <th><button id={player?.id} onClick={handleClick}>waive</button></th>
+              <Button variant="outline-danger" 
+                          id={player?.id} 
+                          onClick={handleClick}>
+                            waive
+              </Button>
+                  
           </tr>
             ))
           }
-          </table>
+          </Table>
           
       </>
     )

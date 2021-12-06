@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import { Form, Button } from 'react-bootstrap'
 
 function Login({ user, setUser, loggedIn, setLoggedIn }) {
   const [username, setUsername] = useState("");
@@ -43,23 +44,30 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
     return(
       <>
       { loggedIn ? 
-      <div>
+      <div align="center">
         <p>glad to see basketball is your favorite sport, too, {user.username}</p>
-        <button onClick={doLogOut}>Log Out</button> 
+        <Button variant="outline-danger" align="center" onClick={doLogOut}>Log Out</Button> 
       </div>  
         :
-        <form className="m-5 5 5 5 text-center" onSubmit={e => userLogIn(e)}>
+        <Form 
+          align="center" 
+          display="block"
+          className="border border-info p-3 w-25 bg-secondary text-white m-2 2 2 2"
+          onSubmit={e => userLogIn(e)}>
+            <h4>who are you?</h4>
         <label>
-            Username:
-            <input type="text" id="username" onChange={e => setUsername(e.target.value)}/>
+            Username:<span> </span>
+            <input className="border border-info rounded m-2 2 2 2 " type="text" id="username" onChange={e => setUsername(e.target.value)}/>
         </label>
         <span>    </span>
         <label>
-            Password:
-            <input type="password" id="password" onChange={e => setPassword(e.target.value)}/>
+            Password:<span> </span>
+            <input className="border border-info rounded m-2 2 2 2 " type="password" id="password" onChange={e => setPassword(e.target.value)}/>
         </label>
-        <input type="submit" value="Log In"/>
-        </form>
+        <span> </span>
+        <br/>
+        <Button align="center" variant="outline-info" className="text-white m-2 2 2 2" type="submit">Log In</Button>
+        </Form>
       }
         </>
     )

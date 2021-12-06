@@ -9,9 +9,9 @@ function MyTeam({ user }){
     
     return(
         <div>
-            <h2>My Teams</h2>
+            <h2 align="center">My Teams</h2>
             {myTeams[0]?.map(team=> <ul key={team.id}>
-                Rosters
+               
              <MyTeamDetail user={user}/>
              </ul>)}
         </div>

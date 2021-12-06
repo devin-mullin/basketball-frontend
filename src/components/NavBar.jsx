@@ -1,6 +1,7 @@
 import { Link, Outlet } from 'react-router-dom'
 import Search from './Search'
 import { useDispatch } from 'react-redux'
+import { Button } from 'react-bootstrap'
 
 
 function NavBar( { loggedIn } ){
@@ -8,12 +9,25 @@ function NavBar( { loggedIn } ){
 
 
     return(
-        <div>
-          <Link to='/my-team'>My Teams</Link>
-          <Link to='/nba-teams'>NBA Teams</Link>
-          <Link to='/community'>Community Teams</Link>
-          <Link to='/box-scores'>Recent Box Scores</Link>
-          {loggedIn ? null : <Link to='sign-up'>Sign up</Link>}
+        <div align="center" 
+             className="border border-info p-3 bg-secondary text-white m-5 5 5 5">
+          <Button variant="outline-info">
+          <Link to='/my-team' className="text-white"><strong> My Teams </strong></Link>
+          </Button>
+          <Button variant="outline-info">
+          <Link to='/nba-teams' className="text-white"><strong> NBA Teams </strong></Link>
+          </Button>
+          <Button variant="outline-info">
+          <Link to='/community' className="text-white"><strong> Community Teams </strong></Link>
+          </Button>
+          <Button variant="outline-info">
+          <Link to='/box-scores' className="text-white"><strong> Recent Box Scores </strong></Link>
+          </Button>
+          {loggedIn ? null : 
+          <Button variant="outline-info" className="text-white">
+          <Link to='sign-up' className="text-white"><strong> Sign Up </strong></Link>
+          </Button>
+          }
         </div>
         
     )

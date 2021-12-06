@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Form, Button } from 'react-bootstrap'
 
 function CreateUser(){
     const [username, setUsername] = useState("");
@@ -26,24 +27,42 @@ function CreateUser(){
 
 
     return(
-        <form onSubmit={userCreate}>
+        <Form 
+        align="center" 
+        display="block"
+        className="border border-info p-3 w-25 bg-secondary text-white m-2 2 2 2" 
+        onSubmit={userCreate}>
+            <h4>create your credentials:</h4>
         <label>
             Username:
-            <input type="text" name="username" 
+            <input type="text" 
+            name="username" 
+            className="border border-info rounded m-2 2 2 2 "
             onChange={(e)=> setUsername(e.target.value)}/>
         </label>
         <label>
             Password:
-            <input type="text" name="password" 
+            <input type="text" 
+            name="password" 
+            className="border border-info rounded m-2 2 2 2 "
             onChange={(e)=> setPassword(e.target.value)}/>
         </label>
         <label>
             Confirm Password:
-            <input type="text" name="password" 
+            <input type="text" 
+            name="password" 
+            className="border border-info rounded m-2 2 2 2 "
             onChange={(e)=> setPasswordConfirmation(e.target.value)}/>
         </label>
-        <input type="submit" value="Sign Up"/>
-        </form>
+        <br/>
+        <Button 
+        type="submit" 
+        variant="outline-info"
+        className="border border-info rounded text-white m-2 2 2 2 "
+        >
+        Sign Up
+        </Button>
+        </Form>
     )
 }
 

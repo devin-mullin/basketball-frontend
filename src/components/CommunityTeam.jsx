@@ -4,7 +4,7 @@ function CommunityTeam(){
 
 
     return(
-        <h3>here's my friend's team</h3>
+        <h3>u n d e r   c o n s t r u c t i o n</h3>
     )
 }
 

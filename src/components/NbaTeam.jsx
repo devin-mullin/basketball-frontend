@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Table, Button } from 'react-bootstrap'
 
 
 function NbaTeam(){
@@ -16,7 +17,7 @@ function NbaTeam(){
   const myTeam = teams[0].find(team=>team.id === id)
 
   const handleClick = (e) =>{
-   
+    alert(`${e.target.name} added to your team!`)
     fetch('http://localhost:3000/user_team_players', {
         method: 'POST',
         headers: {
@@ -37,7 +38,9 @@ function NbaTeam(){
     return(
         <div>
           <h3>{myTeam?.full_name}</h3>
-         <table>
+         <Table striped bordered hover size="sm"
+         className="m-5 5 5 5"
+         >
           <tr>
               <th>Name</th>
               <th>AGE</th>
@@ -76,11 +79,16 @@ function NbaTeam(){
               <td>{player?.stl}</td>
               <td>{player?.blk}</td>
               <td>{player?.tov}</td>
-              <button id={player.id} onClick={handleClick}>add</button>
+              <Button variant="outline-success" 
+                      name={player.name}
+                      id={player.id} 
+                      onClick={handleClick}>
+                        add
+              </Button>
           </tr>
             ))
           }
-          </table>
+          </Table>
         </div>
       
     )

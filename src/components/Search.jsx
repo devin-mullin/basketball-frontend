@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import { selectPlayers } from './redux/playerSlice'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Form, Button } from 'react-bootstrap'
 
 
 function Search() {
@@ -18,29 +19,37 @@ function Search() {
   }
   
     return(
-      <form>
-      <div className="search">
-          <label>Search for players: </label>
+      <Form align="center">
+      <div className="border border-info rounded p-3 m-5 5 5 5 bg-secondary text-white" align="center">
+          <label><strong>Search for players: </strong></label>
+          <span> </span>
           <input
+            className="border border-info rounded"
+            align="center"
             type="text"
             id="search"
             name="search"
             onChange={handleChange}
             />
       </div>
-      {searchText.length < 2 ? null:
-      <div>
-        <p><strong>Players</strong></p>
+      {searchText.length < 3 ? null:
+      <div className="d-flex justify-content-center bg-secondary border border-dark rounded m-5 5 5 5">
         {searchResults?.map(result => 
-        <ul><Link to=
-            {{pathname: `/players/${result.id}`}} 
-              onClick={()=>setSearchText('')}>
+        <ul className="d-inline-flex">
+         <Button variant="outline-info"
+         className="m-5 5 5 5"
+         >
+          <Link 
+            className="text-white" 
+            to={{pathname: `/players/${result.id}`}} 
+            onClick={()=>setSearchText('')}>
                 {result.name} <span> | </span> {result.tm}
           </Link>
+          </Button>
         </ul>)}
       </div>
       }
-      </form>
+      </Form>
     )
 }
 
