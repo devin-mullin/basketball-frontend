@@ -1,15 +1,16 @@
-import { selectMyTeams, fetchMyTeams } from './redux/myTeamSlice'
+import { selectMyTeams, selectMyTeamById, fetchMyTeams } from './redux/myTeamSlice'
 import { remove } from './redux/myTeamPlayerSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { useEffect } from 'react'
 
 
-  function MyTeamDetail(){
+
+  function MyTeamDetail({user}){
     const team = useSelector(selectMyTeams)
     const myTeam = team[0][0].players
     const dispatch = useDispatch()
-
+    console.log(team[0].find(team=>team.user_id === user.id));
     const handleClick = (e) => {
       const id = parseInt(e.target.id)
       const myTeamPlayers = team[0][0].user_team_players

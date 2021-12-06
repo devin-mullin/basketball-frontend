@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, current } from '@reduxjs/toolkit'
 
 export const fetchMyTeams = createAsyncThunk(
     'user_teams/getMyTeams', 
@@ -26,16 +26,16 @@ export const myTeamSlice = createSlice({
 
         builder.addCase(fetchMyTeams.fulfilled, (state, action) => {
 
-            state.push(action.payload)
+            state.push(action.payload);
         })
     },
 })
     
 export const {add, remove} = myTeamSlice.actions
 
-export const selectMyTeams = state=>state.myTeams
+export const selectMyTeams = (state) => state.myTeams
 
 export const selectMyTeamById = (state, myTeamId) => 
-state.myTeams.find(myTeam => myTeam.id === myTeamId)
+state.myTeams[0].find(myTeam => myTeam.user_id === myTeamId)
 
 export default myTeamSlice.reducer

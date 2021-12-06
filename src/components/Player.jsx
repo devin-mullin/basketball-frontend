@@ -2,9 +2,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { selectPlayers, fetchPlayers } from './redux/playerSlice'
 import { add } from './redux/myTeamPlayerSlice'
-import { useEffect } from 'react'
+import { useState } from 'react'
+
+
 
 function Player(){
+    const[modalIsOpen, setModalIsOpen] = useState(false)
+
     let dispatch = useDispatch()
     
     const pgNum = useParams()
@@ -33,6 +37,20 @@ function Player(){
             console.error('Error:', error);
             });
                 }
+
+
+    // video
+
+    const searchTerms = `${thisPlayer?.name} + NBA highlights` 
+    const API_KEY = "AIzaSyD-GsN6WLI9NVb3OyZE1uilHoOr_rI2TnA"
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${searchTerms}&key=${API_KEY}`;
+   
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+    document.querySelector(".youtube").src = `https://www.youtube.com/embed/${data.items[0].id.videoId}`
+        })      
+
 
     return(
         <>
@@ -75,7 +93,10 @@ function Player(){
                 <button id={thisPlayer?.id} onClick={handleClick}>add</button>
             </tr>
             </table>
-            
+ 
+        <div>
+            <iframe width="50%" height="500px" class="youtube"/>
+        </div>
         </>
     )
 }

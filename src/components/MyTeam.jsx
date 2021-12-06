@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
-import { selectMyTeams } from './redux/myTeamSlice'
+import { selectMyTeams, selectTeamById } from './redux/myTeamSlice'
 import MyTeamDetail from "./MyTeamDetail"
 
-function MyTeam(){ 
+function MyTeam({ user }){ 
 
    const myTeams = useSelector(selectMyTeams)
     
@@ -12,7 +12,7 @@ function MyTeam(){
             <h2>My Teams</h2>
             {myTeams[0]?.map(team=> <ul key={team.id}>
                 Rosters
-             <MyTeamDetail teamRoster={team}/>
+             <MyTeamDetail user={user}/>
              </ul>)}
         </div>
     )

@@ -16,7 +16,7 @@ function Search() {
   const handleChange = (e) => {
     setSearchText(e.target.value)
   }
-  console.log(players[0]);
+  
     return(
       <form>
       <div className="search">
