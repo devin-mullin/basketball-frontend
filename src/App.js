@@ -16,12 +16,13 @@ import { fetchTeams } from './components/redux/teamSlice'
 import { fetchPlayers } from './components/redux/playerSlice'
 import { fetchMyTeams } from './components/redux/myTeamSlice'
 import { getTeamPlayers } from './components/redux/myTeamPlayerSlice'
+import appbanner1 from './components/img/appbanner1.jpeg'
 import "tailwindcss/tailwind.css"
 
 function App() {
   const [user, setUser] = useState([])
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [saveData, setSaveData] = useState({})
+  const [loggedIn, setLoggedIn] = useState(null)
+
 
   const dispatch = useDispatch()
   const location = useLocation()
@@ -61,11 +62,9 @@ function App() {
           setUser={setUser} 
           loggedIn={loggedIn} 
           setLoggedIn={setLoggedIn}
-          saveData={saveData} 
-          setSaveData={setSaveData}
           />
       <br />
-      <img src="./img/app-banner1"/>
+      <img src={appbanner1} alt="devy league fantasy basketball version 1.0"/>
       <NavBar loggedIn={loggedIn}/>
       <Routes>           
       <Route path='/sign-up' element={<CreateUser/>}/>

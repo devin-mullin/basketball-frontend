@@ -29,6 +29,9 @@ import { useEffect } from 'react'
       })
     }
 
+    // const add = (accumulator, a) = {
+    //   return accumulator + a
+    // }
 
     return(
       <>
