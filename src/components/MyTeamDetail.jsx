@@ -39,17 +39,9 @@ import { Table, Button } from 'react-bootstrap'
 
     return(
       <>
-      <div>
-          <h3>
-              
-          </h3>
-          <h4>
-              
-          </h4>
-      </div>
       <Table striped bordered hover size="sm"
       className="mt-5 5 5 5"
-      >
+      > Team 1
           <tr>
               <th>Name</th>
               <th>TEAM</th>

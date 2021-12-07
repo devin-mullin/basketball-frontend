@@ -30,7 +30,7 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
     }
     
     function doLogOut(){
-      fetch("/logout",{
+      fetch("http://localhost:3000/logout",{
         method: "DELETE",
       })
       .then(()=>{

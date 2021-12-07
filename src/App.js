@@ -19,7 +19,7 @@ import appbanner1 from './components/img/appbanner1.jpeg'
 
 
 function App() {
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState('')
   const [loggedIn, setLoggedIn] = useState(null)
   const [ locationKeys, setLocationKeys ] = useState([])
 
@@ -28,6 +28,14 @@ function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
+  
+  useEffect(() => {
+    fetch("http://localhost:3000/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
 
   useEffect(()=>{
       dispatch(fetchTeams())    
@@ -41,9 +49,9 @@ function App() {
     dispatch(fetchMyTeams())
   }, [dispatch])
 
-  useEffect(()=>{
-    dispatch(getTeamPlayers())
-  }, [dispatch])
+  // useEffect(()=>{
+  //   dispatch(getTeamPlayers())
+  // }, [dispatch])
 
   // useEffect(() => {
   //   return history.listen(location => {
@@ -64,17 +72,7 @@ function App() {
   // }, [ locationKeys, ])
 
 
-  useEffect(()=>{
-    fetch('/me')
-    .then(res=>{
-      if(res.ok){
-       res.json().then((user)=>setUser(user)) 
-      }
-    })
-  }, [])
 
-
- if(!user) return <Login setUser={setUser}/>
 
   return (
 

@@ -1,15 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { selectPlayers, fetchPlayers } from './redux/playerSlice'
+import { selectPlayers } from './redux/playerSlice'
 import { add } from './redux/myTeamPlayerSlice'
-import { useState } from 'react'
 import config from './config'
 import { Table, Button } from 'react-bootstrap'
 
 
 function Player(){
-    const[modalIsOpen, setModalIsOpen] = useState(false)
-
+   
     let dispatch = useDispatch()
     
     const pgNum = useParams()
@@ -103,7 +101,7 @@ function Player(){
  
         <div align="center">
             <h4>Player Highlights:</h4>
-            <iframe width="50%" height="500px" class="youtube"/>
+            <iframe title="Player Highlights" width="50%" height="500px" class="youtube"/>
         </div>
         </>
     )
