@@ -1,13 +1,22 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
-import { selectMyTeams, selectTeamById, add } from './redux/myTeamSlice'
+import { selectMyTeams, byId, add } from './redux/myTeamSlice'
 import MyTeamDetail from "./MyTeamDetail"
+import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 
 function MyTeam({ user }){ 
    const [teamName, setTeamName] = useState("");
-   const myTeams = useSelector(selectMyTeams)
+   const importTeams = useSelector(selectMyTeams)
+    
+//    console.log(useSelector(selectMyTeams))
+//     if (importTeams === true){  
+//    var myTeams = importTeams[0]?.filter(myTeam=>myTeam.user_id === user.id)
+//     }
+   
    const dispatch = useDispatch()
+
+   let navigate = useNavigate()
 
    const handleSubmit = (e, teamName) =>{
     e.preventDefault();
@@ -22,11 +31,14 @@ function MyTeam({ user }){
         }),
     })
         .then(response => response.json())
-        .then(dispatch(add({
+        .then(()=>{
+            dispatch(add({
             user_id: user.id,
             name: teamName,
             players: []
-        })))
+        }))
+        navigate('/')
+        })
         .catch((error) => {
         console.error('Error:', error);
         });
@@ -56,14 +68,10 @@ function MyTeam({ user }){
             submit
         </Button>
         </Form>
-            {myTeams[0]?.map(team=> <ul key={team.id}>
+            
         
              <MyTeamDetail user={user}/>
-             </ul>)}
-             {myTeams[5]?.map(team=> <ul key={team.id}>
-               
-               <MyTeamDetail user={user}/>
-               </ul>)}  
+            
         </div>
     )
 }

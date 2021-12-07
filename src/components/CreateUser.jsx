@@ -1,14 +1,18 @@
 import { useState } from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 function CreateUser(){
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [passwordConfirmation, setPasswordConfirmation] = useState("");
 
-
+    let navigate = useNavigate()
 
     function userCreate(e){
+        setUsername('')
+        setPassword('')
+        setPasswordConfirmation('')
         e.preventDefault();
         fetch("http://localhost:3000/signup", {
           method: "POST",
@@ -22,7 +26,9 @@ function CreateUser(){
           })
         })
         .then(r => r.json())
-        .then(alert('congrats on signing up for the BEST fantasy app ever made by a guy who is me'))
+        .then(()=>{alert('congrats on signing up for the BEST fantasy app ever made by a guy who is me')
+        navigate('/')}
+        )
     }
 
 

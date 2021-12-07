@@ -1,23 +1,23 @@
-import { selectMyTeams, selectMyTeamById, fetchMyTeams } from './redux/myTeamSlice'
+import { selectMyTeams, selectMyTeamById, fetchMyTeams, removePlayer } from './redux/myTeamSlice'
 import { remove } from './redux/myTeamPlayerSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { Table, Button } from 'react-bootstrap'
+import { useEffect, useState } from 'react'
 
 
 
   function MyTeamDetail({user}){
-    const team = useSelector(selectMyTeams)
-    const myTeam = team[0][0].players
+    const [userTeam, setUserTeam] = useState([])
+
+    const myTeam = userTeam[0]?.players
+
+    let navigate = useNavigate()
     const dispatch = useDispatch()
-
-    // console.log(team[0].find(team=>team.user_id === user.id));
-   
-
     const handleClick = (e) => {
       const id = parseInt(e.target.id)
-      const myTeamPlayers = team[0][0].user_team_players
-      const waivedPlayer = myTeamPlayers.find(player => player.player_id === id);
+      const myTeamPlayers = userTeam[0]?.user_team_players
+      const waivedPlayer = myTeamPlayers?.find(player => player.player_id === id);
       fetch(`http://localhost:3000/user_team_players/${waivedPlayer.id}`, { 
         method: 'DELETE',
         body: JSON.stringify({
@@ -28,20 +28,30 @@ import { Table, Button } from 'react-bootstrap'
       })
       .then(r=>r.json())
       .then(data=>{
-        dispatch(remove(id),
-        window.location.reload(true))
+        dispatch(remove(id))
+        filterState(id)
       })
     }
 
-    // const add = (accumulator, a) = {
-    //   return accumulator + a
-    // }
+    useEffect(()=>{
+      fetch('http://localhost:3000/user_teams')
+      .then(r=>r.json())
+      .then(data=>setUserTeam(data))
+    },[dispatch])
+
+    // console.log(myTeam[0].user_team_players)
+    // console.log(team[0].find(team=>team.user_id === user.id));
+   const filterState = (id) => {
+     setUserTeam(userTeam[0]?.players.filter(player=>player.id === id))
+   }
+
+
 
     return(
       <>
       <Table striped bordered hover size="sm"
       className="mt-5 5 5 5"
-      > Team 1
+      > {userTeam[0]?.name}
           <tr>
               <th>Name</th>
               <th>TEAM</th>
@@ -59,8 +69,8 @@ import { Table, Button } from 'react-bootstrap'
               <th>TOV</th>
               <th></th>
           </tr>
-          {
-            myTeam.map((player)=>(
+          
+            {myTeam?.map((player)=>(
           <tr key={player.id}>
             <Link className="border-0 text-primary" to=
               {{pathname: `/players/${player.id}`}}>
@@ -86,8 +96,8 @@ import { Table, Button } from 'react-bootstrap'
               </Button>
                   
           </tr>
-            ))
-          }
+            ))}
+        
           </Table>
           
       </>

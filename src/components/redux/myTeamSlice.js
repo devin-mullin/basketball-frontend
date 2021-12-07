@@ -9,10 +9,12 @@ export const fetchMyTeams = createAsyncThunk(
     return response
 }) 
 
+let initialState = []
+
 
 export const myTeamSlice = createSlice({
     name: 'myTeams',
-    initialState: [],
+    initialState: initialState,
     reducers: {
         add: (state, action) => {
             state.push(action.payload)
@@ -20,24 +22,37 @@ export const myTeamSlice = createSlice({
         remove: (state, action) => {
             state.filter(team => team.id !== action.payload)
             return state
+        },
+        byId: (state, id) => {
+            let myTeam = state.find(myTeam=>myTeam.user_id === id)
+            return myTeam
+        },
+        add_player: (state, action) => {
+            let thisState = state[0].find(myTeam=>myTeam.user_id === state.user_id)
+            thisState.players.push(action.payload)
+            return thisState
+        },
+        removePlayer: (state, action)=> {
+            let thisState = state.find(myTeam=>myTeam.user_id === state.user_id)
+            thisState[0].players.filter(player=>player.id !== action.payload)
+            return thisState
         }
-    },
+        },
+
     extraReducers: (builder) => {
 
-        builder.addCase(fetchMyTeams.fulfilled, (state, action) => {
+        builder.addCase(fetchMyTeams.fulfilled, (initialState, action) => {
 
-            state.push(action.payload);
+            initialState.push(action.payload);
         })
     },
 })
 
 
 
-export const {add, remove} = myTeamSlice.actions
+export const {add, remove, byId, addPlayer, removePlayer} = myTeamSlice.actions
 
 export const selectMyTeams = (state) => state.myTeams
 
-export const selectMyTeamById = (state, myTeamId) => 
-state.myTeams[0].find(myTeam => myTeam.user_id === myTeamId)
 
 export default myTeamSlice.reducer

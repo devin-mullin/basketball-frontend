@@ -9,7 +9,7 @@ import CommunityTeamsContainer from './components/CommunityTeamsContainer'
 import RecentGamesContainer from './components/RecentGamesContainer'
 import NavBar from "./components/NavBar";
 import Search from "./components/Search"
-import { Routes, Route, useNavigate } from "react-router-dom"
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { fetchTeams } from './components/redux/teamSlice'
 import { fetchPlayers } from './components/redux/playerSlice'
@@ -19,10 +19,16 @@ import appbanner1 from './components/img/appbanner1.jpeg'
 
 
 function App() {
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState({
+    id: "",
+    username: ""
+  })
   const [loggedIn, setLoggedIn] = useState(null)
-  const [ locationKeys, setLocationKeys ] = useState([])
+  const location = useLocation()
 
+  if(loggedIn === true){
+    console.log(user);
+  }
 
 
   const dispatch = useDispatch()
@@ -47,29 +53,13 @@ function App() {
   
   useEffect(()=>{
     dispatch(fetchMyTeams())
-  }, [dispatch])
+  }, [])
 
   // useEffect(()=>{
   //   dispatch(getTeamPlayers())
   // }, [dispatch])
 
-  // useEffect(() => {
-  //   return history.listen(location => {
-  //     if (history.action === 'PUSH') {
-  //       setLocationKeys([ location.key ])
-  //     }
-  
-  //     if (history.action === 'POP') {
-  //       if (locationKeys[1] === location.key) {
-  //         setLocationKeys(([ _, ...keys ]) => keys)
-  
-  //       } else {
-  //         setLocationKeys((keys) => [ location.key, ...keys ])
 
-  //       }
-  //     }
-  //   })
-  // }, [ locationKeys, ])
 
 
 

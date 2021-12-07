@@ -1,5 +1,5 @@
 import { selectAllTeams, fetchTeams } from './redux/teamSlice'
-import { selectMyTeams, fetchMyTeams } from './redux/myTeamSlice'
+import { selectMyTeams, addPlayer } from './redux/myTeamSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -18,6 +18,8 @@ function NbaTeam(){
 
   const handleClick = (e) =>{
     alert(`${e.target.name} added to your team!`)
+    const player = myTeam.players.filter(player=>player.id == e.target.id)
+    console.log(player);
     fetch('http://localhost:3000/user_team_players', {
         method: 'POST',
         headers: {
@@ -29,7 +31,7 @@ function NbaTeam(){
         }),
     })
         .then(response => response.json())
-        .then(dispatch(selectMyTeams))
+        .then(()=>dispatch(addPlayer(player)))
         .catch((error) => {
         console.error('Error:', error);
         });
@@ -37,7 +39,7 @@ function NbaTeam(){
 
     return(
         <div>
-          <h3>{myTeam?.full_name}</h3>
+          <h3 align="center">{myTeam?.full_name}</h3>
          <Table striped bordered hover size="sm"
          className="m-5 5 5 5"
          >
@@ -82,6 +84,7 @@ function NbaTeam(){
               <Button variant="outline-success" 
                       name={player.name}
                       id={player.id} 
+                      label={player}
                       onClick={handleClick}>
                         add
               </Button>
