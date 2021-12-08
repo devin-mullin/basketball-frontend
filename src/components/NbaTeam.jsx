@@ -41,8 +41,9 @@ function NbaTeam(){
         <div>
           <h3 align="center">{myTeam?.full_name}</h3>
          <Table striped bordered hover size="sm"
-         className="m-5 5 5 5"
+         className="m-5 5 5 5 bg-light"
          >
+           <thead>
           <tr>
               <th>Name</th>
               <th>AGE</th>
@@ -59,12 +60,17 @@ function NbaTeam(){
               <th>TOV</th>
               <th></th>
           </tr>
+          </thead>
+          <tbody>
           {
             myTeam?.players.map((player)=>(
           <tr key={player.id}>
               <td>
-                <Link to=
+                <Link 
+                    className="text-dark"
+                    to=
                   {{pathname: `/players/${player.id}`}} 
+                   
                    >
                       {player?.name}
                 </Link>
@@ -91,6 +97,7 @@ function NbaTeam(){
           </tr>
             ))
           }
+          </tbody>
           </Table>
         </div>
       

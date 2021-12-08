@@ -72,7 +72,7 @@ function App() {
 
   return (
 
-      <div className="bg-light">
+      <div style={{backgroundColor: "lightgray"}}>
       <div align="center">
         <img className="border border-info" 
         src={appbanner1} 

@@ -1,16 +1,16 @@
 import { Link, Outlet } from 'react-router-dom'
-import Search from './Search'
 import { useDispatch } from 'react-redux'
-import { Button } from 'react-bootstrap'
-
+import { Button, Navbar, Container} from 'react-bootstrap'
 
 function NavBar( { loggedIn } ){
 
 
 
     return(
-        <div align="center" 
-             className="border border-info p-3 bg-secondary text-white m-5 5 5 5">
+      <Container>
+        <Navbar  
+             className="border border-info bg-secondary text-white" sticky="top">
+          <Container>
           {loggedIn ?
             <Button variant="outline-info"> 
               <Link to='/my-team' className="text-white"><strong> My Teams </strong></Link>
@@ -28,8 +28,12 @@ function NavBar( { loggedIn } ){
             <Button variant="outline-info" className="text-white">
               <Link to='sign-up' className="text-white"><strong> Sign Up </strong></Link>
             </Button>
+            
           }
-        </div>
+          </Container>
+        </Navbar>
+      </Container>
+      
         
     )
 }

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { selectPlayers } from './redux/playerSlice'
 import { add } from './redux/myTeamPlayerSlice'
 import config from './config'
-import { Table, Button } from 'react-bootstrap'
+import { Table, Button, Card } from 'react-bootstrap'
 
 
 function Player(){
@@ -54,17 +54,21 @@ function Player(){
 
     return(
         <>
-        <div>
-            <h3 align="center">
+        <Card className="bg-secondary justify-content-md-center border border-info rounded m-5 5 5 5 text-white" 
+           >
+            <Card className="flex bg-secondary border border-info rounded m-5-5-5-5">
+            <h4 align="center" >
                 {thisPlayer?.name}
-            </h3>
-            <h4 align="center">
-                {thisPlayer?.tm}
             </h4>
-        </div>
+            <p align="center">
+            <strong>{thisPlayer?.pos}, {thisPlayer?.tm}</strong>
+            </p> 
+            </Card>       
         <Table striped bordered hover size="sm"
-        className="m-5 5 5 5"
+        className="flex bg-light"
+    
         >
+            <thead>
             <tr>
                 <th>AGE</th>
                 <th>POS</th>
@@ -79,6 +83,8 @@ function Player(){
                 <th>BPG</th>
                 <th>TOV</th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td>{thisPlayer?.age}</td>
                 <td>{thisPlayer?.pos}</td>
@@ -92,7 +98,7 @@ function Player(){
                 <td>{thisPlayer?.stl}</td>
                 <td>{thisPlayer?.blk}</td>
                 <td>{thisPlayer?.tov}</td>
-                <Button variant="outline-success" 
+                <Button variant="outline-success" className="text-success" 
                     id={thisPlayer?.id} 
                     onClick={handleClick}
                     name={thisPlayer?.name}
@@ -100,12 +106,13 @@ function Player(){
                     add
                 </Button>
             </tr>
+            </tbody>
             </Table>
- 
-        <div align="center">
-            <h4>Player Highlights:</h4>
+            <div align="center">
+            <p>Highlights:</p>
             <iframe title="Player Highlights" width="50%" height="500px" class="youtube"/>
         </div>
+            </Card>
         </>
     )
 }

@@ -54,8 +54,9 @@ import { useEffect, useState } from 'react'
     return(
       <>
       <Table striped bordered hover size="sm"
-      className="mt-5 5 5 5"
+      className="mt-5 5 5 5 bg-light"
       > 
+      <thead>
           <tr>
               <th>Name</th>
               <th>TEAM</th>
@@ -73,10 +74,11 @@ import { useEffect, useState } from 'react'
               <th>TOV</th>
               <th></th>
           </tr>
-          
+        </thead>
+        <tbody>
             {myTeam?.map((player)=>(
           <tr key={player.id}>
-            <Link className="border-0 text-primary" to=
+            <Link className="border-0 text-dark" to=
               {{pathname: `/players/${player.id}`}}>
                 {player?.name}
             </Link>
@@ -102,7 +104,7 @@ import { useEffect, useState } from 'react'
                   
           </tr>
             ))}
-        
+        </tbody>
           </Table>
           
       </>
