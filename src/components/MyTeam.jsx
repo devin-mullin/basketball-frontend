@@ -47,7 +47,7 @@ function MyTeam({ user }){
     return(
         <div>
             <h2 align="center">My Teams</h2>
-            <Form 
+            {/* <Form 
         align="center" 
         display="block"
         className="border border-info p-3 w-25 bg-secondary text-white m-2 2 2 2" 
@@ -67,7 +67,7 @@ function MyTeam({ user }){
         >
             submit
         </Button>
-        </Form>
+        </Form> */}
             
         
              <MyTeamDetail user={user}/>

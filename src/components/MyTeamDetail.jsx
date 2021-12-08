@@ -15,6 +15,7 @@ import { useEffect, useState } from 'react'
     let navigate = useNavigate()
     const dispatch = useDispatch()
     const handleClick = (e) => {
+      alert(`${e.target.name} has been waived`)
       const id = parseInt(e.target.id)
       const myTeamPlayers = userTeam[0]?.user_team_players
       const waivedPlayer = myTeamPlayers?.find(player => player.player_id === id);
@@ -28,8 +29,10 @@ import { useEffect, useState } from 'react'
       })
       .then(r=>r.json())
       .then(data=>{
-        dispatch(remove(id))
         filterState(id)
+        dispatch(remove(id))
+        navigate('/')
+        navigate('/my-team')
       })
     }
 
@@ -42,16 +45,17 @@ import { useEffect, useState } from 'react'
     // console.log(myTeam[0].user_team_players)
     // console.log(team[0].find(team=>team.user_id === user.id));
    const filterState = (id) => {
-     setUserTeam(userTeam[0]?.players.filter(player=>player.id === id))
-   }
+    const updatePlayer = [...userTeam[0]?.players.filter((player)=>player.id !== id)]
+    setUserTeam(updatePlayer)
+    }
 
-
-
+    
+    
     return(
       <>
       <Table striped bordered hover size="sm"
       className="mt-5 5 5 5"
-      > {userTeam[0]?.name}
+      > 
           <tr>
               <th>Name</th>
               <th>TEAM</th>
@@ -89,11 +93,12 @@ import { useEffect, useState } from 'react'
               <td>{player?.stl}</td>
               <td>{player?.blk}</td>
               <td>{player?.tov}</td>
-              <Button variant="outline-danger" 
+              <td><Button variant="outline-danger" 
                           id={player?.id} 
-                          onClick={handleClick}>
+                          name={player?.name}
+                          onClick={(e)=>handleClick(e)}>
                             waive
-              </Button>
+              </Button></td>
                   
           </tr>
             ))}

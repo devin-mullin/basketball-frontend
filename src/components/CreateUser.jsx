@@ -10,9 +10,6 @@ function CreateUser(){
     let navigate = useNavigate()
 
     function userCreate(e){
-        setUsername('')
-        setPassword('')
-        setPasswordConfirmation('')
         e.preventDefault();
         fetch("http://localhost:3000/signup", {
           method: "POST",
@@ -26,8 +23,11 @@ function CreateUser(){
           })
         })
         .then(r => r.json())
-        .then(()=>{alert('congrats on signing up for the BEST fantasy app ever made by a guy who is me')
-        navigate('/')}
+        .then(data=>{
+            localStorage.setItem("token", data.jwt)
+            alert('congrats on signing up for the BEST fantasy app ever made by a guy who is me')
+            navigate('/')
+        }
         )
     }
 

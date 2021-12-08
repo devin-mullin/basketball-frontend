@@ -36,13 +36,19 @@ function App() {
 
   
   useEffect(() => {
-    fetch("http://localhost:3000/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
-
+    const token = localStorage.getItem("token")
+    if(token){
+      fetch(`http://localhost:3000/auto_login`,{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      .then(res=>res.json())
+      .then(data=> {
+        setUser(data)
+      })
+    }
+  },[])
   useEffect(()=>{
       dispatch(fetchTeams())    
   }, [dispatch])

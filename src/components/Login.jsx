@@ -20,9 +20,14 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
         .then((r)=>{
           setIsLoading(false);
           if (r.ok) {
-            r.json().then((user)=>setUser(user))
+            r.json().then(data=>{
+              localStorage.setItem("token", data.jwt)
+              setUser(data)
+            })
             alert("welcome to the GREATEST FANTASY BASKETBALL APP EVER CREATED by me")
             setLoggedIn(true);
+            setUsername("")
+            setPassword("")
           } else {
             r.json().then((err)=> setErrors(err.errors))
           }

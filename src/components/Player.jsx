@@ -17,6 +17,7 @@ function Player(){
     
  
     const handleClick = (e) =>{
+        alert(`${e.target.name} added to your team!`)
         fetch('http://localhost:3000/user_team_players', {
             method: 'POST',
             headers: {
@@ -93,7 +94,9 @@ function Player(){
                 <td>{thisPlayer?.tov}</td>
                 <Button variant="outline-success" 
                     id={thisPlayer?.id} 
-                    onClick={handleClick}>
+                    onClick={handleClick}
+                    name={thisPlayer?.name}
+                    >
                     add
                 </Button>
             </tr>

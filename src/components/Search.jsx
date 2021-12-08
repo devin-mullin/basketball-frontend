@@ -41,6 +41,7 @@ function Search() {
          >
           <Link 
             className="text-white" 
+            key={result.id}
             to={{pathname: `/players/${result.id}`}} 
             onClick={()=>setSearchText('')}>
                 {result.name} <span> | </span> {result.tm}
