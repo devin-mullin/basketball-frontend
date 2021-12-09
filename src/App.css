@@ -44,3 +44,10 @@
   column-gap: 10px;
   row-gap: 15px;
 }
+
+html {background-color: lightgray}
+
+*{
+  font-family: "Courier";
+  font-weight: 400;
+}

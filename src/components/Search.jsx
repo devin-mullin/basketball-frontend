@@ -22,7 +22,7 @@ function Search() {
       <Form
           className="border border-info rounded p-3 m-4 4 4 4 bg-secondary text-white" align="center">
           <input
-            className="border border-info rounded mb-3 "
+            className="border border-info rounded mb-2 "
             align="right"
             type="text"
             id="search"

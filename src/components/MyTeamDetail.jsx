@@ -58,20 +58,20 @@ import { useEffect, useState } from 'react'
       > 
       <thead>
           <tr>
-              <th>Name</th>
-              <th>TEAM</th>
-              <th>AGE</th>
-              <th>POS</th>
-              <th>PPG</th>
-              <th>FG%</th>
-              <th>3P%</th>
-              <th>FT%</th>
-              <th>MPG</th>
-              <th>RPG</th>
-              <th>APG</th>
-              <th>SPG</th>
-              <th>BPG</th>
-              <th>TOV</th>
+              <th><strong>Name</strong></th>
+              <th><strong>TEAM</strong></th>
+              <th><strong>AGE</strong></th>
+              <th><strong>POS</strong></th>
+              <th><strong>PPG</strong></th>
+              <th><strong>FG%</strong></th>
+              <th><strong>3P%</strong></th>
+              <th><strong>FT%</strong></th>
+              <th><strong>MPG</strong></th>
+              <th><strong>RPG</strong></th>
+              <th><strong>APG</strong></th>
+              <th><strong>SPG</strong></th>
+              <th><strong>BPG</strong></th>
+              <th><strong>TOV</strong></th>
               <th></th>
           </tr>
         </thead>
