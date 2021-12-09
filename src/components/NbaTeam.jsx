@@ -46,9 +46,10 @@ function NbaTeam(){
            <thead>
           <tr>
           <th><strong>Name</strong></th>
-              <th><strong>TEAM</strong></th>
               <th><strong>AGE</strong></th>
               <th><strong>POS</strong></th>
+              <th><strong>GP</strong></th>
+              <th><strong>GS</strong></th>
               <th><strong>PPG</strong></th>
               <th><strong>FG%</strong></th>
               <th><strong>3P%</strong></th>
@@ -78,6 +79,8 @@ function NbaTeam(){
                 </td>
               <td>{player?.age}</td>
               <td>{player?.pos}</td>
+              <td>{player?.g}</td>
+              <td>{player?.gs}</td>
               <td>{player?.pts}</td>
               <td>{player?.fgp}</td>
               <td>{player?.thpp}</td>

@@ -72,6 +72,8 @@ function Player(){
             <tr>
               <th><strong>AGE</strong></th>
               <th><strong>POS</strong></th>
+              <th><strong>GP</strong></th>
+              <th><strong>GS</strong></th>
               <th><strong>PPG</strong></th>
               <th><strong>FG%</strong></th>
               <th><strong>3P%</strong></th>
@@ -88,6 +90,8 @@ function Player(){
             <tr>
                 <td>{thisPlayer?.age}</td>
                 <td>{thisPlayer?.pos}</td>
+                <td>{thisPlayer?.g}</td>
+                <td>{thisPlayer?.gs}</td>
                 <td>{thisPlayer?.pts}</td>
                 <td>{thisPlayer?.fgp}</td>
                 <td>{thisPlayer?.thpp}</td>
