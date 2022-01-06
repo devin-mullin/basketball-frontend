@@ -25,6 +25,14 @@ function App() {
   })
   const [loggedIn, setLoggedIn] = useState(null)
   const location = useLocation()
+  const [games, getGames] = useState({})
+
+  useEffect(()=>{
+    fetch('http://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard#')
+    .then(r=>r.json())
+    .then(data=>getGames(data))
+}, [])
+
 
   if(loggedIn === true){
     console.log(user);
@@ -96,7 +104,7 @@ function App() {
       <Route path='/players/:id' element={<Player/>}/>
       <Route path='/my-team' element={<MyTeam user={user} />} />
       <Route path='/community' element={<CommunityTeamsContainer />} />
-       <Route path='/box-scores' element={<RecentGamesContainer />} /> 
+       <Route path='/box-scores' element={<RecentGamesContainer games={games}/>} /> 
         <Route exact path='/players' component={Player}/>
         <Route path='/players/:id' component={Player}/>
       </Routes>
