@@ -23,10 +23,12 @@ function NbaTeamsContainer(){
             <button className="team-button"
           
             >
-            <Link className="text-dark" 
+            <Link className="team-link" 
             to={{pathname: `/nba-teams/${team.id}`}}         
            >
+               <strong>
                 {team.full_name}
+                </strong>
             </Link>
             </button>
             </row>)}

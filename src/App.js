@@ -15,7 +15,6 @@ import { fetchTeams } from './components/redux/teamSlice'
 import { fetchPlayers } from './components/redux/playerSlice'
 import { fetchMyTeams } from './components/redux/myTeamSlice'
 import { getTeamPlayers } from './components/redux/myTeamPlayerSlice'
-import appbanner1 from './components/img/appbanner1.jpeg'
 
 
 function App() {
@@ -82,11 +81,10 @@ function App() {
 
       <div className="App">
       <div className="logo">
-        <img className="border border-info" 
-        src={appbanner1} 
-        alt="devy league fantasy basketball version 1.0"
+        <h2
+        alt="devy league fantasy basketball version 0.5"
         onClick={()=>navigate('/')}
-        />
+        >devyleague fantasy basketball v0.5</h2> 
       </div>
       <Login 
           user={user}

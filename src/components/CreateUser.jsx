@@ -36,28 +36,28 @@ function CreateUser(){
         <Form 
         align="center" 
         display="block"
-        className="border border-info p-3 w-25 bg-secondary text-white m-2 2 2 2" 
+        className="login" 
         onSubmit={userCreate}>
             <h4>create your credentials:</h4>
         <label>
-            Username:
+            Username:<span> </span>
             <input type="text" 
             name="username" 
-            className="border border-info rounded m-2 2 2 2 "
+            className="label"
             onChange={(e)=> setUsername(e.target.value)}/>
         </label>
         <label>
-            Password:
+            Password:<span> </span>
             <input type="text" 
             name="password" 
-            className="border border-info rounded m-2 2 2 2 "
+            className="label"
             onChange={(e)=> setPassword(e.target.value)}/>
         </label>
         <label>
-            Confirm Password:
+            Confirm Password:<span> </span> 
             <input type="text" 
             name="password" 
-            className="border border-info rounded m-2 2 2 2 "
+            className="label"
             onChange={(e)=> setPasswordConfirmation(e.target.value)}/>
         </label>
         <br/>

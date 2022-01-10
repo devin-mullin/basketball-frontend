@@ -1,9 +1,7 @@
 import { selectAllTeams, fetchTeams } from './redux/teamSlice'
 import { selectMyTeams, addPlayer } from './redux/myTeamSlice'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { Table, Button } from 'react-bootstrap'
 
 
@@ -37,10 +35,19 @@ function NbaTeam(){
         });
             }
 
+    let navigate = useNavigate()
+
     return(
         <div className="team">
+              <div className="back-button-div">
+                  <button className="back-button" 
+                          onClick={()=>navigate(-1)}>
+                            back
+                  </button>
+              </div>
           <h3>{myTeam?.full_name}</h3>
-         <Table striped bordered hover
+         <Table bordered hover 
+         class="table" size="sm"
         
          >
            <thead>
@@ -74,7 +81,9 @@ function NbaTeam(){
                   {{pathname: `/players/${player.id}`}} 
                    
                    >
+                    <strong>
                       {player?.name}
+                    </strong>
                 </Link>
                 </td>
               <td>{player?.age}</td>
