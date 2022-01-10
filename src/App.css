@@ -1,8 +1,12 @@
 
+html {
+  background-color: black;
+  height: 100%;
+}
+
 .App {
   text-align: center;
   background-color: black;
-  overflow: hidden;
 }
 
 
@@ -43,7 +47,6 @@
   row-gap: 15px;
 }
 
-html {background-color: lightgray}
 
 *{
   font-family: "Courier";
