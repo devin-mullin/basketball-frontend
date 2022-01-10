@@ -126,6 +126,25 @@ html {background-color: lightgray}
   grid-template-columns: 1fr 1fr;
 }
 
+.teams-container {
+  display: grid;
+  grid-template-columns: 150px 150px 150px 150px 150px;
+  grid-template-rows: 50px 50px;
+  column-gap: 50px;
+  row-gap: 50px;
+  color: black;
+  align-items: center;
+}
+
+.team-button {
+  display: block ;
+  color: black;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 75px;
+  width: 130px;
+}
+
 
 .team {
   text-align: center;

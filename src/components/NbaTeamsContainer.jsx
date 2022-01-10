@@ -2,7 +2,7 @@ import NbaTeam from './NbaTeam'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectAllTeams } from './redux/teamSlice'
 import { Link } from 'react-router-dom'
-import { Stack, Button, Container, Row } from 'react-bootstrap'
+import { Button, Container, Row } from 'react-bootstrap'
 import '/home/devin/personal/basketball-mega/basketball-frontend/src/App.css'
 
 
@@ -13,23 +13,23 @@ function NbaTeamsContainer(){
 
     return(
         <>
-        <Container align="center">
-        <h3>NBA Teams</h3>
-        {teams[0].map(team=> 
-        <Row  
+        <h3 className="teams-container">NBA Teams</h3>
+        <Container className="teams-container">
+        {teams[0]?.map(team=> 
+        <row 
         md={4}
         className="justify-content-md-center"
         key={team.id}>
-            <Button variant="outline-info"
-            className="m-2 2 2 2"
+            <button className="team-button"
+          
             >
-            <Link className="text-black" 
+            <Link className="text-dark" 
             to={{pathname: `/nba-teams/${team.id}`}}         
            >
                 {team.full_name}
             </Link>
-            </Button>
-            </Row>)}
+            </button>
+            </row>)}
         </Container>
         </>
     )
