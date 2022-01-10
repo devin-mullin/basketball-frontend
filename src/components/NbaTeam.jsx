@@ -46,8 +46,8 @@ function NbaTeam(){
                   </button>
               </div>
           <h3>{myTeam?.full_name}</h3>
-         <Table bordered hover 
-         class="table" size="sm"
+         <Table striped bordered hover 
+         className="table" size="sm"
         
          >
            <thead>

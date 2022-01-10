@@ -2,7 +2,7 @@ import { selectMyTeams, selectMyTeamById, fetchMyTeams, removePlayer } from './r
 import { remove } from './redux/myTeamPlayerSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
-import { Table, Button } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
 
 
@@ -52,9 +52,15 @@ import { useEffect, useState } from 'react'
     
     
     return(
-      <>
+      <div className="team">
+               <div className="back-button-div">
+                  <button className="back-button" 
+                          onClick={()=>navigate(-1)}>
+                            back
+                  </button>
+              </div>
       <Table striped bordered hover size="sm"
-      className="mt-5 5 5 5 bg-light"
+      className="table"
       > 
       <thead>
           <tr>
@@ -80,9 +86,13 @@ import { useEffect, useState } from 'react'
         <tbody>
             {myTeam?.map((player)=>(
           <tr key={player.id}>
-            <Link className="border-0 text-dark" to=
+            <Link 
+            className="player-link" 
+            to=
               {{pathname: `/players/${player.id}`}}>
+                <strong>
                 {player?.name}
+                </strong>
             </Link>
               <td>{player?.tm}</td>
               <td>{player?.age}</td>
@@ -99,19 +109,19 @@ import { useEffect, useState } from 'react'
               <td>{player?.stl}</td>
               <td>{player?.blk}</td>
               <td>{player?.tov}</td>
-              <td><Button variant="outline-danger" 
+              <td><button className="player-remove-button" 
                           id={player?.id} 
                           name={player?.name}
                           onClick={(e)=>handleClick(e)}>
                             waive
-              </Button></td>
+              </button></td>
                   
           </tr>
             ))}
         </tbody>
           </Table>
           
-      </>
+      </div>
     )
 } 
 

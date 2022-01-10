@@ -14,6 +14,7 @@ function NbaTeamsContainer(){
     return(
         <>
         <h3 className="teams-container">NBA Teams</h3>
+        
         <Container className="teams-container">
         {teams[0]?.map(team=> 
         <row 

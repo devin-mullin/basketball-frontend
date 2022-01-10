@@ -46,7 +46,7 @@ function MyTeam({ user }){
 
     return(
         <div>
-            <h2 align="center">My Teams</h2>
+            <h2 className="team">My Teams</h2>
             {/* <Form 
         align="center" 
         display="block"

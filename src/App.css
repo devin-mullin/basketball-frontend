@@ -193,6 +193,21 @@ html {
   color: white !important;         
 }
 
+.player-remove-button {
+  margin: 2px auto;
+  background: lightblue !important;
+  color: black !important; 
+  transition: background-color .6s ease;
+  border: 1px solid;
+  border-radius: 5px
+}
+
+.player-remove-button:hover {
+  background-color: red !important;
+  color: white !important;         
+}
+
+
 .player-link {
   color: black;
   text-shadow: 0 0 0 1px blue, 0 0 1px #c0ffee;
@@ -247,11 +262,10 @@ html {
   border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
-  background-image: linear-gradient(to left #c0ffee, lightgray, blue);
-  transition: 0.6s
+  transition: all .2s ease-in-out;
  
 }
 
 .back-button:hover {
-  background-position: right
+  transform: scale(1.05)
 }
