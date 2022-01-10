@@ -9,7 +9,7 @@ function NavBar( { loggedIn } ){
     return(
       <Container>
         <Navbar  
-             className="border border-info bg-secondary rounded text-white" sticky="top">
+             className="">
           <Container>
           {loggedIn ?
             <Button variant="outline-info"> 

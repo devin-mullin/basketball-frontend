@@ -13,7 +13,7 @@ function Player(){
     const pgNum = useParams()
     const id = parseInt(pgNum.id)
     const players = useSelector(selectPlayers)   
-    const thisPlayer = players[0].find(player=> player.id === id)
+    const thisPlayer = players[0]?.find(player=> player.id === id)
     
  
     const handleClick = (e) =>{

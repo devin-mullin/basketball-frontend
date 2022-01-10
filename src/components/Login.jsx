@@ -55,9 +55,7 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
       </div>  
         :
         <Form 
-          align="center" 
-          display="block"
-          className="border border-info rounded p-3 w-25 bg-secondary text-white m-2 2 2 2"
+          className="login"
           onSubmit={e => userLogIn(e)}>
             <h4>who are you?</h4>
         <label>

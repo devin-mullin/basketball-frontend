@@ -80,8 +80,9 @@ function App() {
 
   return (
 
-      <div style={{backgroundColor: "lightgray"}}>
-      <div align="center">
+      <div className="App">
+      <NavBar loggedIn={loggedIn}/>
+      <div className="logo">
         <img className="border border-info" 
         src={appbanner1} 
         alt="devy league fantasy basketball version 1.0"
@@ -95,7 +96,6 @@ function App() {
           setLoggedIn={setLoggedIn}
           />
       <br />
-      <NavBar loggedIn={loggedIn}/>
       <Search />
       <Routes>           
       <Route path='/sign-up' element={<CreateUser/>}/>

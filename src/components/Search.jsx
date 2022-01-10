@@ -19,10 +19,9 @@ function Search() {
   }
   
     return(
-      <Form
-          className="border border-info rounded p-3 m-4 4 4 4 bg-secondary text-white" align="center">
+      <Form className="search">
           <input
-            className="border border-info rounded mb-2 "
+            className="input"
             align="right"
             type="text"
             id="search"
