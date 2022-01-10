@@ -54,25 +54,26 @@ html {background-color: lightgray}
   font-weight: 400;
 }
 
+
 .navbar{
-  border: 3px solid blue;
+  border: 3px solid #c0ffee;
+  border-radius: 30px;
   top: 30px; bottom: 30px; left: 0; right: 0;
 }
 
 .logo {
   top: 30px; bottom: 30px; left: 0; right: 0;
   margin: 50px auto;
-  width: auto;
   justify-content: center;
   text-align: center;
   position: relative;
 }
 
 .login{
-  border: 3px solid blue;
+  border: 3px solid #c0ffee;
   border-radius: 30px;
   width: 500px;
-  color: yellow;
+  color: #c0ffee;
   padding: 10px;
   justify-content: center;
   text-align: center;
@@ -81,19 +82,132 @@ html {background-color: lightgray}
   margin: 50px auto
 }
 
+.label{
+  border: 1px solid;
+  border-radius: 10px;
+  height: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.search-container{
+  display: flex;
+}
+
 .search {
-  border: 3px solid blue;
+  border: 3px solid #c0ffee;
   border-radius: 30px;  
   width: 500px;
   justify-content: center;
+  align-items: center;
   position: relative;
   top: 30px; bottom: 0; left: 0; right: 0;
-  margin: 50px auto
+  margin: 50px auto;
+  display: block;
 }
 
 .input {
-  display: block;
+  display: absolute;
+  align-self: center;
   width: 50%;
-  margin: 20px 20px;
-  border-radius: 30px
+  height: 50px;
+  margin: 20px 20px 20px 20px;
+  border-radius: 10px
+}
+
+.results {
+  width: 500px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+
+.team {
+  text-align: center;
+  color: #c0ffee;
+  border: 1px solid #c0ffee;
+  border-radius: 30px;
+  display: block
+
+}
+
+.player-add-button {
+  margin: 2px auto;
+  background: lightblue !important;
+  color: white !important; 
+  transition: background-color 0.2s ease;
+  border: 1px solid;
+  border-radius: 5px
+}
+
+.player-add-button:hover {
+  background-color: green !important          
+}
+
+.player-link {
+  color: black;
+  overflow: hidden;
+  background: linear-gradient(to right, royalblue, black 50%, blue 50%, green);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 750ms ease;
+}
+
+.player-link:hover {
+  background-position: 0 100%
+}
+
+.table {
+ background-color: #EAFDFF;
+  display: table;
+  opacity: 0.9;
+  border: 1px solid black;
+  border-radius:10px;
+  position: relative;
+  top: 0; bottom: 0; left: 0; right: 0;
+  margin: 50px auto;
+  width: 50%
+}
+
+.player-card {
+  border: 3px solid #c0ffee;
+  border-radius: 30px;
+  width: 50%;
+  background-color: lightgray;
+  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  top: 30px; bottom: 30px; left: 0; right: 0;
+  margin: 50px auto;
+}
+
+.back-button-div {
+  position: absolute;
+  top: 10px; 
+  left: 20px;
+}
+
+.back-button {
+  color: black;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  background-image: linear-gradient(to left #c0ffee, lightgray, blue);
+  transition: 0.6s
+ 
+}
+
+.back-button:hover {
+  background-position: right
 }

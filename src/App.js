@@ -81,7 +81,6 @@ function App() {
   return (
 
       <div className="App">
-      <NavBar loggedIn={loggedIn}/>
       <div className="logo">
         <img className="border border-info" 
         src={appbanner1} 
@@ -96,6 +95,7 @@ function App() {
           setLoggedIn={setLoggedIn}
           />
       <br />
+      <NavBar loggedIn={loggedIn}/>
       <Search />
       <Routes>           
       <Route path='/sign-up' element={<CreateUser/>}/>

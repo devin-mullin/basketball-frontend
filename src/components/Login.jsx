@@ -60,12 +60,20 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
             <h4>who are you?</h4>
         <label>
             Username:<span> </span>
-            <input className="border border-info rounded m-2 2 2 2 " type="text" id="username" onChange={e => setUsername(e.target.value)}/>
+            <input 
+            className="label" 
+            type="text" 
+            id="username" 
+            onChange={e => setUsername(e.target.value)}/>
         </label>
         <span>    </span>
         <label>
             Password:<span> </span>
-            <input className="border border-info rounded m-2 2 2 2 " type="password" id="password" onChange={e => setPassword(e.target.value)}/>
+            <input 
+            className="label" 
+            type="password" 
+            id="password" 
+            onChange={e => setPassword(e.target.value)}/>
         </label>
         <span> </span>
         <br/>

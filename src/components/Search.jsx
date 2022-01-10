@@ -19,6 +19,7 @@ function Search() {
   }
   
     return(
+    <div className="search-container">
       <Form className="search">
           <input
             className="input"
@@ -30,7 +31,8 @@ function Search() {
             onChange={handleChange}
             />
       {searchText.length < 3 ? null:
-      <Container className="flex bg-secondary border border-dark rounded">
+      
+      <Container className="results">
         {searchResults?.map(result => 
         
          <Button variant="outline-info"
@@ -49,6 +51,7 @@ function Search() {
       
       }
       </Form>
+    </div>
     )
 }
 

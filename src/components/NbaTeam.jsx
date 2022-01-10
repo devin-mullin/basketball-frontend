@@ -14,7 +14,7 @@ function NbaTeam(){
   const teams = useSelector(selectAllTeams) 
   const pgNum = useParams()
   const id = parseInt(pgNum.id)
-  const myTeam = teams[0].find(team=>team.id === id)
+  const myTeam = teams[0]?.find(team=>team.id === id)
 
   const handleClick = (e) =>{
     alert(`${e.target.name} added to your team!`)
@@ -38,10 +38,10 @@ function NbaTeam(){
             }
 
     return(
-        <div>
-          <h3 align="center">{myTeam?.full_name}</h3>
-         <Table striped bordered hover size="sm"
-         className="m-5 5 5 5 bg-light"
+        <div className="team">
+          <h3>{myTeam?.full_name}</h3>
+         <Table striped bordered hover
+        
          >
            <thead>
           <tr>
@@ -69,7 +69,7 @@ function NbaTeam(){
           <tr key={player.id}>
               <td>
                 <Link 
-                    className="text-dark"
+                    className="player-link"
                     to=
                   {{pathname: `/players/${player.id}`}} 
                    
@@ -91,13 +91,14 @@ function NbaTeam(){
               <td>{player?.stl}</td>
               <td>{player?.blk}</td>
               <td>{player?.tov}</td>
-              <Button variant="outline-success" 
+              <button
                       name={player.name}
+                      className="player-add-button"
                       id={player.id} 
                       label={player}
                       onClick={handleClick}>
                         add
-              </Button>
+              </button>
           </tr>
             ))
           }

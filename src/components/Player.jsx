@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { selectPlayers } from './redux/playerSlice'
 import { add } from './redux/myTeamPlayerSlice'
 import config from './config'
-import { Table, Button, Card } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 
 
 function Player(){
@@ -48,24 +48,25 @@ function Player(){
     fetch(url)
     .then(response => response.json())
     .then(data => {
-    document.querySelector(".youtube").src = `https://www.youtube.com/embed/${data.items[0].id.videoId}`
+        document.querySelector(".youtube").src = `https://www.youtube.com/embed/${data?.items[0]?.id.videoId}`
         })      
 
+    
+    let navigate = useNavigate()
 
     return(
-        <>
-        <Card className="bg-secondary justify-content-md-center border border-info rounded m-5 5 5 5 text-white" 
-           >
-            <Card className="flex bg-secondary border border-info rounded m-5-5-5-5">
+            <div className="player-card">
+                <div className="back-button-div">
+                    <button className="back-button" onClick={()=>navigate(-1)}>back</button>
+                </div>
             <h4 align="center" >
                 {thisPlayer?.name}
             </h4>
             <p align="center">
             <strong>{thisPlayer?.pos}, {thisPlayer?.tm}</strong>
-            </p> 
-            </Card>       
+            </p>       
         <Table striped bordered hover size="sm"
-        className="flex bg-light"
+        className="table"
     
         >
             <thead>
@@ -102,22 +103,21 @@ function Player(){
                 <td>{thisPlayer?.stl}</td>
                 <td>{thisPlayer?.blk}</td>
                 <td>{thisPlayer?.tov}</td>
-                <Button variant="outline-success" className="text-success" 
+                <button className="player-add-button" 
                     id={thisPlayer?.id} 
                     onClick={handleClick}
                     name={thisPlayer?.name}
                     >
                     add
-                </Button>
+                </button>
             </tr>
             </tbody>
             </Table>
-            <div align="center">
+            <div className="player-highlights">
             <p>Highlights:</p>
-            <iframe title="Player Highlights" width="50%" height="500px" class="youtube"/>
+            <iframe title="Player Highlights" width="75%" height="500px" class="youtube"/>
         </div>
-            </Card>
-        </>
+        </div> 
     )
 }
 
