@@ -9,21 +9,16 @@ import CommunityTeamsContainer from './components/CommunityTeamsContainer'
 import RecentGamesContainer from './components/RecentGamesContainer'
 import NavBar from "./components/NavBar";
 import Search from "./components/Search"
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom"
+import { Routes, Route, useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { fetchTeams } from './components/redux/teamSlice'
 import { fetchPlayers } from './components/redux/playerSlice'
 import { fetchMyTeams } from './components/redux/myTeamSlice'
-import { getTeamPlayers } from './components/redux/myTeamPlayerSlice'
 
 
 function App() {
-  const [user, setUser] = useState({
-    id: "",
-    username: ""
-  })
-  const [loggedIn, setLoggedIn] = useState(null)
-  const location = useLocation()
+  const [user, setUser] = useState({})
+  const [loggedIn, setLoggedIn] = useState(false)
   const [games, getGames] = useState({})
 
   useEffect(()=>{
@@ -33,9 +28,6 @@ function App() {
 }, [])
 
 
-  if(loggedIn === true){
-    console.log(user);
-  }
 
 
   const dispatch = useDispatch()
@@ -52,10 +44,12 @@ function App() {
       })
       .then(res=>res.json())
       .then(data=> {
+        setLoggedIn(true)
         setUser(data)
       })
     }
   },[])
+
   useEffect(()=>{
       dispatch(fetchTeams())    
   }, [dispatch])
@@ -68,9 +62,6 @@ function App() {
     dispatch(fetchMyTeams())
   }, [])
 
-  // useEffect(()=>{
-  //   dispatch(getTeamPlayers())
-  // }, [dispatch])
 
 
 
@@ -84,6 +75,7 @@ function App() {
         <h2
         alt="devy league fantasy basketball version 0.5"
         onClick={()=>navigate('/')}
+        style={{cursor: 'pointer'}}
         >devyleague fantasy basketball v0.5</h2> 
       </div>
       <Login 

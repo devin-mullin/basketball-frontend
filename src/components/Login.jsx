@@ -7,8 +7,8 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-    function userLogIn(e, saveData){
-      e.preventDefault();
+    function userLogIn(e){
+      e.preventDefault()
       setIsLoading(true);
         fetch("http://localhost:3000/login", {
           method: "POST",
@@ -21,8 +21,9 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
           setIsLoading(false);
           if (r.ok) {
             r.json().then(data=>{
+              console.log(data);
               localStorage.setItem("token", data.jwt)
-              setUser(data)
+              setUser(data.user.username)
             })
             alert("welcome to the GREATEST FANTASY BASKETBALL APP EVER CREATED by me")
             setLoggedIn(true);
@@ -35,14 +36,9 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
     }
     
     function doLogOut(){
-      fetch("http://localhost:3000/logout",{
-        method: "DELETE",
-      })
-      .then(()=>{
+        localStorage.removeItem("token")
         setLoggedIn(false)
         setUser([])
-        // history('/')
-      })
     }
 
 

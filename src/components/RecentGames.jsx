@@ -1,8 +1,16 @@
-import { useState, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { selectPlayers } from './redux/playerSlice'
+import { Link } from 'react-router-dom'
 
 
 function RecentGames({ games }){
 
+// stats selectors
+const players = useSelector(selectPlayers)
+const ppgPlayer1 = games?.events[0]?.competitions[0]?.competitors[0]?.leaders[0]?.leaders[0]?.athlete?.displayName
+const thisPlayer1 = players[0]?.find(player=> player.name === ppgPlayer1)
+const ppgPlayer2 = games?.events[0]?.competitions[0]?.competitors[1]?.leaders[0]?.leaders[0]?.athlete?.displayName
+const thisPlayer2 = players[0]?.find(player=> player.name === ppgPlayer2)
 
 
 
@@ -20,13 +28,31 @@ function RecentGames({ games }){
             <br/>
             {games?.events[0]?.competitions[0]?.competitors[0]?.team?.shortDisplayName}
             <br/>
-            {games?.events[0]?.competitions[0]?.competitors[0]?.leaders[0]?.leaders[0]?.athlete?.displayName}
+            <Link 
+                    className="player-boxscore-link"
+                    to=
+                  {{pathname: `/players/${thisPlayer1.id}`}} 
+                   
+                   >
+                    <strong>
+                        {ppgPlayer1}
+                    </strong>
+            </Link>
             <span> | </span>{games?.events[0]?.competitions[0]?.competitors[0]?.leaders[0]?.leaders[0]?.displayValue} 
             <br/>
             <br/>
             {games?.events[0]?.competitions[0]?.competitors[1]?.team?.shortDisplayName}
             <br/>
-            {games?.events[0]?.competitions[0]?.competitors[1]?.leaders[0]?.leaders[0]?.athlete?.displayName}
+            <Link 
+                    className="player-boxscore-link"
+                    to=
+                  {{pathname: `/players/${thisPlayer2.id}`}} 
+                   
+                   >
+                    <strong>
+                        {ppgPlayer2}
+                    </strong>
+            </Link>
             <span> | </span>{games?.events[0]?.competitions[0]?.competitors[1]?.leaders[0]?.leaders[0]?.displayValue} 
             
         </div>

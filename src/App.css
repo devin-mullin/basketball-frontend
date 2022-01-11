@@ -82,7 +82,7 @@ html {
 }
 
 .navbar-button:hover {
-  transform: scale(1.1)
+  transform: scale(1.05)
 }
 
 .logo {
@@ -177,7 +177,7 @@ html {
 .team-link {
   color: white;
   overflow: hidden;
-  background: linear-gradient(to right, royalblue, #c0ffee 50%, aqua 50%);
+  background: linear-gradient(to right, #2acaea, white 50%, #3399ff 50%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -283,7 +283,7 @@ html {
 
 .player-card-add-button {
   margin: 2px auto;
-  background: lightblue !important;
+  background: white !important;
   color: black !important; 
   transition: background-color .6s ease;
   border: 3px solid #c0ffee;
@@ -318,4 +318,21 @@ html {
 
 .back-button:hover {
   transform: scale(1.05)
+}
+
+.player-boxscore-link {
+  color: white;
+  text-shadow: 0 0 0 1px white, 0 0 1px #c0ffee;
+  overflow: hidden;
+  background: linear-gradient(to right, #2acaea, white 50%, #3399ff 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 750ms ease;
+}
+
+.player-boxscore-link:hover {
+  background-position: 0 100%
 }

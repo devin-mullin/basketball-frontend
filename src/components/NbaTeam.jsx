@@ -1,8 +1,8 @@
 import { selectAllTeams, fetchTeams } from './redux/teamSlice'
-import { selectMyTeams, addPlayer } from './redux/myTeamSlice'
+import { addPlayer } from './redux/myTeamSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link, useNavigate } from 'react-router-dom'
-import { Table, Button } from 'react-bootstrap'
+import { Table } from 'react-bootstrap'
 
 
 function NbaTeam(){
