@@ -60,6 +60,31 @@ html {
   top: 30px; bottom: 30px; left: 0; right: 0;
 }
 
+.navbar-link {
+  color: white;
+  overflow: hidden;
+  background: linear-gradient(to right, black, #c0ffee 50%, white 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 750ms ease;
+}
+
+.navbar-link:hover {
+  background-position: 0 100%
+}
+
+.navbar-button {
+  transition: all 250ms ease-in-out;
+  margin: 10px
+}
+
+.navbar-button:hover {
+  transform: scale(1.1)
+}
+
 .logo {
   top: 30px; bottom: 30px; left: 0; right: 0;
   margin: 50px auto;
@@ -238,9 +263,10 @@ html {
 
 .player-card {
   border: 3px solid #c0ffee;
+  color: #c0ffee;
   border-radius: 30px;
   width: 50%;
-  background-color: lightgray;
+  background-color: black;
   padding: 10px;
   justify-content: center;
   text-align: center;
@@ -249,6 +275,30 @@ html {
   margin: 50px auto;
 }
 
+.player-card-add-div {
+  position: absolute;
+  top: 10px; 
+  right: 20px;
+}
+
+.player-card-add-button {
+  margin: 2px auto;
+  background: lightblue !important;
+  color: black !important; 
+  transition: background-color .6s ease;
+  border: 3px solid #c0ffee;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all .2s ease-in-out;
+ 
+}
+
+.player-card-add-button:hover {
+  transform: scale(1.05);
+  background-color: green !important;
+  color: white !important;    
+}
 .back-button-div {
   position: absolute;
   top: 10px; 

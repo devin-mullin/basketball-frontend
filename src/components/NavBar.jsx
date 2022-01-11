@@ -12,21 +12,21 @@ function NavBar( { loggedIn } ){
              className="">
           <Container>
           {loggedIn ?
-            <Button variant="outline-info"> 
-              <Link to='/my-team' className="text-white"><strong> My Teams </strong></Link>
+            <Button variant="outline-info" className="navbar-button"> 
+              <Link to='/my-team' className="navbar-link"><strong> My Teams </strong></Link>
             </Button> : null}
-          <Button variant="outline-info">
-            <Link to='/nba-teams' className="text-white"><strong> NBA Teams </strong></Link>
+          <Button variant="outline-info" className="navbar-button">
+            <Link to='/nba-teams' className="navbar-link"><strong> NBA Teams </strong></Link>
           </Button>
-          <Button variant="outline-info">
-            <Link to='/community' className="text-white"><strong> Community Teams </strong></Link>
+          <Button variant="outline-info" className="navbar-button">
+            <Link to='/community' className="navbar-link"><strong> Community Teams </strong></Link>
           </Button>
-          <Button variant="outline-info">
-            <Link to='/box-scores' className="text-white"><strong> Recent Box Scores </strong></Link>
+          <Button variant="outline-info" className="navbar-button">
+            <Link to='/box-scores' className="navbar-link"><strong> Recent Box Scores </strong></Link>
           </Button>
           {loggedIn ? null : 
-            <Button variant="outline-info" className="text-white">
-              <Link to='sign-up' className="text-white"><strong> Sign Up </strong></Link>
+            <Button variant="outline-info" className="navbar-button">
+              <Link to='sign-up' className="navbar-link"><strong> Sign Up </strong></Link>
             </Button>
             
           }

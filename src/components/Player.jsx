@@ -59,6 +59,15 @@ function Player(){
                 <div className="back-button-div">
                     <button className="back-button" onClick={()=>navigate(-1)}>back</button>
                 </div>
+            <div className="player-card-add-div">
+            <button className="player-card-add-button" 
+                    id={thisPlayer?.id} 
+                    onClick={handleClick}
+                    name={thisPlayer?.name}
+                    >
+                    add
+                </button>
+            </div>
             <h4 align="center" >
                 {thisPlayer?.name}
             </h4>
@@ -103,13 +112,6 @@ function Player(){
                 <td>{thisPlayer?.stl}</td>
                 <td>{thisPlayer?.blk}</td>
                 <td>{thisPlayer?.tov}</td>
-                <button className="player-add-button" 
-                    id={thisPlayer?.id} 
-                    onClick={handleClick}
-                    name={thisPlayer?.name}
-                    >
-                    add
-                </button>
             </tr>
             </tbody>
             </Table>
