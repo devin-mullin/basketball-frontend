@@ -22,7 +22,7 @@ function NavBar( { loggedIn } ){
             <Link to='/community' className="navbar-link"><strong> Community Teams </strong></Link>
           </Button>
           <Button variant="outline-info" className="navbar-button">
-            <Link to='/box-scores' className="navbar-link"><strong> Recent Box Scores </strong></Link>
+            <Link to='/box-scores' className="navbar-link"><strong> Today's NBA Matchups </strong></Link>
           </Button>
           {loggedIn ? null : 
             <Button variant="outline-info" className="navbar-button">

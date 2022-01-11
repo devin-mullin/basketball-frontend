@@ -46,7 +46,7 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
       <>
       { loggedIn ? 
       <div align="center">
-        <p className="text-dark"><strong>glad to see basketball is your favorite sport, too, {user.username}</strong></p>
+        <p className="headers"><strong>glad to see basketball is your favorite sport, too, {user.username}</strong></p>
         <Button variant="outline-danger" align="center" onClick={doLogOut}>Log Out</Button> 
       </div>  
         :

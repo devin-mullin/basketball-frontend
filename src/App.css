@@ -95,6 +95,10 @@ html {
   text-shadow: 0 3px, 0 0 3px aqua, 0 2px white 
 }
 
+.headers {
+  color: #c0ffee;
+}
+
 .login{
   border: 3px solid #c0ffee;
   border-radius: 30px;
@@ -335,4 +339,9 @@ html {
 
 .player-boxscore-link:hover {
   background-position: 0 100%
+}
+
+.player-boxscore-pic {
+  height: auto;
+  width: 200px
 }

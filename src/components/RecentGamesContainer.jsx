@@ -5,7 +5,7 @@ function RecentGamesContainer({ games }){
 
     return(
         <>
-        <h3>today's matchups</h3>
+        <h3 className="headers">today's matchups</h3>
         <RecentGames games={games} />
         </>
     )
