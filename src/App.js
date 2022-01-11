@@ -72,11 +72,11 @@ function App() {
 
       <div className="App">
       <div className="logo">
-        <h2
+        <h1
         alt="devy league fantasy basketball version 0.5"
         onClick={()=>navigate('/')}
         style={{cursor: 'pointer'}}
-        >devyleague fantasy basketball v0.5</h2> 
+        >devyleague fantasy basketball v0.5</h1> 
       </div>
       <Login 
           user={user}
@@ -99,6 +99,7 @@ function App() {
         <Route path='/players/:id' component={Player}/>
       </Routes>
       <br/>
+
       </div>
   );
 }

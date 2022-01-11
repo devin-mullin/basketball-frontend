@@ -35,11 +35,13 @@ const rpgPlayer2pic = games?.events[0]?.competitions[0]?.competitors[1]?.leaders
             {games?.events[0]?.name}
             </h4>
             <br/>
-            <p><strong>statistical leaders</strong></p>
-            {games?.events[0]?.competitions[0]?.competitors[0]?.leaders[0]?.shortDisplayName}
+        <p><strong>statistical leaders</strong></p>
+            <strong>
+                {games?.events[0]?.competitions[0]?.competitors[0]?.leaders[0]?.shortDisplayName}
+            </strong>
             <br/>
             <br/>
-            {games?.events[0]?.competitions[0]?.competitors[0]?.team?.shortDisplayName}
+                {games?.events[0]?.competitions[0]?.competitors[0]?.team?.shortDisplayName}
             <br/>
             <img 
                 className="player-boxscore-pic" 
@@ -59,17 +61,17 @@ const rpgPlayer2pic = games?.events[0]?.competitions[0]?.competitors[1]?.leaders
                     </strong>
             </Link>
             <span> | </span>{games?.events[0]?.competitions[0]?.competitors[0]?.leaders[0]?.leaders[0]?.displayValue} 
-            <br/>
-            <br/>
+                <br/>
+                <br/>
             {games?.events[0]?.competitions[0]?.competitors[1]?.team?.shortDisplayName}
-            <br/>
+                <br/>
             <img 
                 className="player-boxscore-pic" 
                 src={thisPlayer2pic}
                 onClick={()=> navigate(`/players/${thisPlayer2.id}`)} 
                 style={{cursor: 'pointer'}}
                 />
-            <br/>
+                <br/>
             <Link 
                     className="player-boxscore-link"
                     to=
@@ -81,13 +83,17 @@ const rpgPlayer2pic = games?.events[0]?.competitions[0]?.competitors[1]?.leaders
                     </strong>
             </Link>
             <span> | </span>{games?.events[0]?.competitions[0]?.competitors[1]?.leaders[0]?.leaders[0]?.displayValue} 
-            <br/>
-            <br/>
+                <br/>
+                <br/>
+            
+        <strong>
             {games?.events[0]?.competitions[0]?.competitors[0]?.leaders[1]?.shortDisplayName}
-            <br/>
-            <br/>
+        </strong>
+                <br/>
+                <br/>
             {games?.events[0]?.competitions[0]?.competitors[0]?.team?.shortDisplayName}
-            <br/>
+        
+                <br/>
             <img 
                 className="player-boxscore-pic" 
                 src={rpgPlayer1pic}

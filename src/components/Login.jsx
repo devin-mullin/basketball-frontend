@@ -53,18 +53,18 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
         <Form 
           className="login"
           onSubmit={e => userLogIn(e)}>
-            <h4>who are you?</h4>
+            <h4><strong>who are you?</strong></h4>
         <label>
-            Username:<span> </span>
+            username:<span> </span><br/>
             <input 
             className="label" 
             type="text" 
             id="username" 
             onChange={e => setUsername(e.target.value)}/>
         </label>
-        <span>    </span>
+        <span>    </span><br/>
         <label>
-            Password:<span> </span>
+            password:<span> </span><br/>
             <input 
             className="label" 
             type="password" 

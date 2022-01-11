@@ -11,6 +11,11 @@ function CreateUser(){
 
     function userCreate(e){
         e.preventDefault();
+        if(username.includes('devy')){
+            alert('i told you NOT to pick devy. that is MY name. MY name is already TAKEN. here is a list of names that are more appropriate for someone like you, a person who likes to pick names that have already been TAKEN.');
+            window.open('https://babynames.com/')
+            setUsername("")
+        } else {
         fetch("http://localhost:3000/signup", {
           method: "POST",
           headers: {
@@ -28,7 +33,7 @@ function CreateUser(){
             alert('congrats on signing up for the BEST fantasy app ever made by a guy who is me')
             navigate('/')
         }
-        )
+        )}
     }
 
 
@@ -38,24 +43,27 @@ function CreateUser(){
         display="block"
         className="login" 
         onSubmit={userCreate}>
-            <h4>create your credentials:</h4>
+            <h4><strong>create your profile</strong></h4>
         <label>
-            Username:<span> </span>
+            username:<span> </span><br/>
             <input type="text" 
+            placeholder="do NOT pick devy!"
             name="username" 
             className="label"
             onChange={(e)=> setUsername(e.target.value)}/>
         </label>
+        <br/>
         <label>
-            Password:<span> </span>
-            <input type="text" 
+            password:<span> </span><br/>
+            <input type="password" 
             name="password" 
             className="label"
             onChange={(e)=> setPassword(e.target.value)}/>
         </label>
+        <br/>
         <label>
-            Confirm Password:<span> </span> 
-            <input type="text" 
+            confirm password:<span> </span><br/>
+            <input type="password" 
             name="password" 
             className="label"
             onChange={(e)=> setPasswordConfirmation(e.target.value)}/>

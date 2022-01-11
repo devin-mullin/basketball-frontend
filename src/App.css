@@ -63,7 +63,7 @@ html {
 .navbar-link {
   color: white;
   overflow: hidden;
-  background: linear-gradient(to right, black, #c0ffee 50%, white 50%);
+  background: linear-gradient(to right, black, blue 50%, white 50%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -78,7 +78,8 @@ html {
 
 .navbar-button {
   transition: all 250ms ease-in-out;
-  margin: 10px
+  margin: 10px;
+  border-radius: 10px !important;
 }
 
 .navbar-button:hover {
@@ -158,6 +159,7 @@ html {
 
 .teams-container {
   display: grid;
+  margin-top: 75px;
   grid-template-columns: 150px 150px 150px 150px 150px;
   grid-template-rows: 50px 50px;
   column-gap: 50px;
@@ -175,7 +177,11 @@ html {
   border-radius: 10px;
   height: 90px;
   width: 130px;
-  
+  transition: all 250ms ease-in-out;
+}
+
+.team-button:hover {
+ transform: scale(1.05)
 }
 
 .team-link {
@@ -322,6 +328,10 @@ html {
 
 .back-button:hover {
   transform: scale(1.05)
+}
+
+.boxscore-layout {
+
 }
 
 .player-boxscore-link {
