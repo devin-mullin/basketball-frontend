@@ -6,7 +6,7 @@ import config from './config'
 import { Table } from 'react-bootstrap'
 
 
-function Player(){
+function Player({ selectedTeam }){
    
     let dispatch = useDispatch()
     
@@ -24,14 +24,14 @@ function Player(){
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                user_team_id: 1,
+                user_team_id: selectedTeam,
                 player_id: e.target.id
             }),
         })
             .then(response => response.json())
             .then(dispatch(add({
                 player_id: id,
-                user_team_id: 1
+                user_team_id: selectedTeam
             })))
             .catch((error) => {
             console.error('Error:', error);

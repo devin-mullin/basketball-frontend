@@ -61,6 +61,7 @@ import { useEffect, useState } from 'react'
                             back
                   </button>
               </div>
+              <h4>{userTeam.name}</h4>
       <Table striped bordered hover size="sm"
       className="table"
       > 
