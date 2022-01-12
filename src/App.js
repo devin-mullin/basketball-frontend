@@ -20,6 +20,7 @@ function App() {
   const [user, setUser] = useState({})
   const [loggedIn, setLoggedIn] = useState(false)
   const [games, getGames] = useState({})
+  const [selectedTeam, setSelectedTeam] = useState([])
 
   useEffect(()=>{
     fetch('http://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard#')
@@ -60,7 +61,7 @@ function App() {
   
   useEffect(()=>{
     dispatch(fetchMyTeams())
-  }, [])
+  }, [dispatch])
 
 
 
@@ -90,9 +91,9 @@ function App() {
       <Routes>           
       <Route path='/sign-up' element={<CreateUser/>}/>
       <Route exact path='/nba-teams' element={<NbaTeamsContainer />} />
-      <Route path ='nba-teams/:id' element={<NbaTeam/>}/>
-      <Route path='/players/:id' element={<Player/>}/>
-      <Route path='/my-team' element={<MyTeam user={user} />} />
+      <Route path ='nba-teams/:id' element={<NbaTeam selectedTeam={selectedTeam} />}/>
+      <Route path='/players/:id' element={<Player selectedTeam={selectedTeam}/>}/>
+      <Route path='/my-team' element={<MyTeam user={user} setSelectedTeam={setSelectedTeam} selectedTeam={selectedTeam} />} />
       <Route path='/community' element={<CommunityTeamsContainer />} />
        <Route path='/box-scores' element={<RecentGamesContainer games={games}/>} /> 
         <Route exact path='/players' component={Player}/>

@@ -174,6 +174,20 @@ html {
   background-position: 0 100%
 }
 
+.myteam-button {
+  border-radius: 10px;
+  background-color: lightblue !important;
+  color: black;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  transition: background-color .6s ease;
+}
+
+.myteam-button:hover {
+  background-color: green !important;
+  color: white !important;         
+}
+
 
 .teams-container {
   display: grid;

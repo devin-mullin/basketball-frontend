@@ -5,7 +5,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { Table } from 'react-bootstrap'
 
 
-function NbaTeam(){
+function NbaTeam({ selectedTeam }){
   const dispatch = useDispatch()
 
   
@@ -24,7 +24,7 @@ function NbaTeam(){
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            user_team_id: 1,
+            user_team_id: selectedTeam,
             player_id: e.target.id
         }),
     })

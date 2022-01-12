@@ -7,13 +7,21 @@ import { useEffect, useState } from 'react'
 
 
 
-  function MyTeamDetail({user}){
-    const [userTeam, setUserTeam] = useState([])
-
-    const myTeam = userTeam[0]?.players
+  function MyTeamDetail({ user, teamId }){
+    const [userTeam, setUserTeam] = useState({})
 
     let navigate = useNavigate()
     const dispatch = useDispatch()
+
+    useEffect(()=>{
+      fetch(`http://localhost:3000/user_teams/${teamId}`)
+      .then(r=>r.json())
+      .then(data=>setUserTeam(data))
+    },[teamId])
+
+    const myTeam = userTeam?.players
+ 
+
     const handleClick = (e) => {
       alert(`${e.target.name} has been waived`)
       const id = parseInt(e.target.id)
@@ -36,16 +44,10 @@ import { useEffect, useState } from 'react'
       })
     }
 
-    useEffect(()=>{
-      fetch('http://localhost:3000/user_teams')
-      .then(r=>r.json())
-      .then(data=>setUserTeam(data))
-    },[dispatch])
-
     // console.log(myTeam[0].user_team_players)
     // console.log(team[0].find(team=>team.user_id === user.id));
    const filterState = (id) => {
-    const updatePlayer = [...userTeam[0]?.players.filter((player)=>player.id !== id)]
+    const updatePlayer = [...userTeam.players.filter((player)=>player.id !== id)]
     setUserTeam(updatePlayer)
     }
 
