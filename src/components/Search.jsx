@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { selectPlayers } from './redux/playerSlice'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Form, Button, Navbar, Container } from 'react-bootstrap'
+import { Form, Button, Container } from 'react-bootstrap'
 
 
 function Search() {
@@ -36,14 +36,16 @@ function Search() {
         {searchResults?.map(result => 
         
          <Button variant="outline-info"
-         className="flex"
+         className="navbar-button"
          >
           <Link 
-            className="text-white" 
+            className="search-link" 
             key={result.id}
             to={{pathname: `/players/${result.id}`}} 
             onClick={()=>setSearchText('')}>
+              <strong>
                 {result.name} <span> | </span> {result.tm}
+              </strong>
           </Link>
           </Button>
         )}

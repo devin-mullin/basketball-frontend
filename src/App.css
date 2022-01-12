@@ -157,6 +157,24 @@ html {
   grid-template-columns: 1fr 1fr;
 }
 
+.search-link {
+  color: white;
+  overflow: hidden;
+  font-weight: 900;
+  background: linear-gradient(to right, black, blue 50%, white 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 100%;
+  background-position: 100%;
+  transition: background-position 750ms ease;
+}
+
+.search-link:hover {
+  background-position: 0 100%
+}
+
+
 .teams-container {
   display: grid;
   margin-top: 75px;
