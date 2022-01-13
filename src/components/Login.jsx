@@ -21,9 +21,11 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
           setIsLoading(false);
           if (r.ok) {
             r.json().then(data=>{
-              console.log(data);
               localStorage.setItem("token", data.jwt)
-              setUser(data.user.username)
+              setUser({
+                username: data.user.username,
+                id: data.user.id
+              })
             })
             alert("welcome to the GREATEST FANTASY BASKETBALL APP EVER CREATED by me")
             setLoggedIn(true);

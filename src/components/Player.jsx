@@ -17,7 +17,7 @@ function Player({ selectedTeam }){
     
  
     const handleClick = (e) =>{
-        alert(`${e.target.name} added to your team!`)
+        alert(`${e.target.name} added to ${selectedTeam.name}}!`)
         fetch('http://localhost:3000/user_team_players', {
             method: 'POST',
             headers: {

@@ -15,7 +15,7 @@ function NbaTeam({ selectedTeam }){
   const myTeam = teams[0]?.find(team=>team.id === id)
 
   const handleClick = (e) =>{
-    alert(`${e.target.name} added to your team!`)
+    alert(`${e.target.name} added to ${selectedTeam.name}!`)
     const player = myTeam.players.filter(player=>player.id == e.target.id)
     console.log(player);
     fetch('http://localhost:3000/user_team_players', {

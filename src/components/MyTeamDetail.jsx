@@ -25,7 +25,7 @@ import { useEffect, useState } from 'react'
     const handleClick = (e) => {
       alert(`${e.target.name} has been waived`)
       const id = parseInt(e.target.id)
-      const myTeamPlayers = userTeam[0]?.user_team_players
+      const myTeamPlayers = userTeam?.user_team_players
       const waivedPlayer = myTeamPlayers?.find(player => player.player_id === id);
       fetch(`http://localhost:3000/user_team_players/${waivedPlayer.id}`, { 
         method: 'DELETE',
@@ -55,13 +55,7 @@ import { useEffect, useState } from 'react'
     
     return(
       <div className="team">
-               <div className="back-button-div">
-                  <button className="back-button" 
-                          onClick={()=>navigate(-1)}>
-                            back
-                  </button>
-              </div>
-              <h4>{userTeam.name}</h4>
+              <h4>{userTeam?.name}</h4>
       <Table striped bordered hover size="sm"
       className="table"
       > 

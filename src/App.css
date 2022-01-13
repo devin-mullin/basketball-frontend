@@ -98,6 +98,7 @@ html {
 
 .headers {
   color: #c0ffee;
+  margin: 25px auto
 }
 
 .login{
@@ -114,11 +115,18 @@ html {
 }
 
 .label{
-  border: 1px solid;
+  border: 1px solid black;
+  background-color: #525252;
+  color: white;
   border-radius: 10px;
-  height: 30px;
+  height: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
+}
+
+.label::placeholder {
+  color: white;
+  opacity: 0.8
 }
 
 .search-container{
@@ -140,10 +148,17 @@ html {
 .input {
   display: absolute;
   align-self: center;
+  background-color: #525252;
+  color: white;
   width: 50%;
   height: 50px;
   margin: 20px 20px 20px 20px;
   border-radius: 10px
+}
+
+.input::placeholder{
+  color: white;
+  opacity: 0.8
 }
 
 .results {
@@ -176,7 +191,7 @@ html {
 
 .myteam-button {
   border-radius: 10px;
-  background-color: lightblue !important;
+  background-color: lightgray !important;
   color: black;
   margin-top: 10px;
   margin-bottom: 5px;
@@ -187,6 +202,17 @@ html {
   background-color: green !important;
   color: white !important;         
 }
+
+.myteam-select {
+  border-radius: 30px;
+  color: black;
+  width: 500px;
+  padding: 10px;
+  position: relative;
+  top: 0; bottom: 30px; left: 0; right: 0;
+  margin: 50px auto;
+}
+
 
 
 .teams-container {

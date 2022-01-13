@@ -13,8 +13,36 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
    const dispatch = useDispatch()
    let navigate = useNavigate()
 
+   //react select
    const list = user.user_teams
-
+   console.log(user);
+    const customStyles = {
+        option: (provided, state) => ({
+            ...provided,
+             backgroundColor: state.isSelected ? '#c0ffee' : 'black',
+            color: state.isSelected ? 'black' : 'white',
+            border: '1px dotted aqua',
+            borderRadius: '10px',
+            cursor: 'pointer'
+            }),
+        menu: (provided, state) => ({
+            ...provided,
+            backgroundColor: state.isSelected ? 'black' : 'black',
+            borderRadius: '10px',
+            opacity: 0.9,
+            cursor: 'pointer' 
+        }),
+        control: (provided, state) => ({
+            ...provided,
+            backgroundColor: '#525252',
+            borderRadius: '10px',
+        }),
+        placeholder: (provided) => ({
+            ...provided,
+            color: 'white',
+            opacity: 0.8,
+        })
+    }    
 
 
    const handleSubmit = (e) =>{
@@ -46,18 +74,28 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
             }
 
     return(
-        <div>
-            <h2 className="team">My Teams</h2> 
+        <div className="team">
+            <div className="back-button-div">
+                  <button className="back-button" 
+                          onClick={()=>navigate(-1)}>
+                            back
+                  </button>
+              </div>
+            <h2 className="headers">My Teams</h2> 
             <Select
+            className="myteam-select"
             options={list}
+            styles={customStyles}
             getOptionLabel={(list=>list.name)}
             getOptionValue={list=>list.id}
-            onChange={(e)=>setSelectedTeam(e.id)}
+            placeholder= 'Select your team...'
+            onChange={(e)=>setSelectedTeam(e)}
             ></Select>
-             
-             <MyTeamDetail user={user} teamId={selectedTeam}/>
+             {selectedTeam != '' ?  <MyTeamDetail user={user} teamId={selectedTeam.id}/>
+            : null 
+            }
 
-             <Form 
+        <Form 
         align="center" 
         display="block"
         className="login" 
