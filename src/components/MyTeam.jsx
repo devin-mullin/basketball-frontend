@@ -8,13 +8,16 @@ import { Form, Button } from 'react-bootstrap'
 
 function MyTeam({ user, setSelectedTeam, selectedTeam }){ 
    const [teamName, setTeamName] = useState("");
-
+    const [list, setList] = useState([])
 
    const dispatch = useDispatch()
    let navigate = useNavigate()
 
    //react select
-   const list = user.user_teams
+//    useEffect(()=>{
+//        fetch('https://localhost:3000/user_teams')
+//    })
+
    console.log(user);
     const customStyles = {
         option: (provided, state) => ({
