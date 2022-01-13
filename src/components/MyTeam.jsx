@@ -13,7 +13,7 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
    let navigate = useNavigate()
     const userId = user.id
     const allTeams = useSelector(selectMyTeams)
-    const myTeams = allTeams[0].filter(team => team.user_id === userId)
+    const myTeams = allTeams[0]?.filter(team => team.user_id === userId)
 
     const customStyles = {
         option: (provided, state) => ({
@@ -33,7 +33,14 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
         }),
         control: (provided, state) => ({
             ...provided,
-            backgroundColor: '#525252',
+            backgroundColor: state.isSelected ? '#c0ffee' : '#525252',
+            color: 'white',
+            borderRadius: '10px',
+        }),
+        singleValue: (provided, state) => ({
+            ...provided,
+            backgroundColor: state.isSelected ? '#c0ffee' : '#525252',
+            color: 'white',
             borderRadius: '10px',
         }),
         placeholder: (provided) => ({
@@ -87,7 +94,7 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
             styles={customStyles}
             getOptionLabel={(list=>list.name)}
             getOptionValue={list=>list.id}
-            placeholder= 'Select your team...'
+            placeholder= {"Select your team..."}
             onChange={(e)=>setSelectedTeam(e)}
             ></Select>
              {selectedTeam != '' ?  <MyTeamDetail user={user} teamId={selectedTeam.id}/>

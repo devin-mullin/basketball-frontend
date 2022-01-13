@@ -51,11 +51,24 @@ import { useEffect, useState } from 'react'
     setUserTeam(updatePlayer)
     }
 
-    
-    
+  const ppg = myTeam?.reduce((total, m) => total + m.pts, 0)
+  let percAdd = myTeam?.reduce((total, m )=> total + m.fgp, 0)
+  let percentage = percAdd / myTeam?.length
+  let winShares = ppg * percentage
+  let turnover = myTeam?.reduce((total, m )=> total + m.tov, 0)
+  let red = winShares - turnover
+  let winTotal = parseInt(red)
+  if(winTotal > 82){
+    winTotal = 82
+  }
+  let lossCalc = 82 - winTotal
+  let lossTotal = parseInt(lossCalc)
+ 
+  
+
     return(
       <div className="team">
-              <h4>{userTeam?.name}</h4>
+              <h4 className="headers">{userTeam?.name}</h4>
       <Table striped bordered hover size="sm"
       className="table"
       > 
@@ -117,7 +130,7 @@ import { useEffect, useState } from 'react'
             ))}
         </tbody>
           </Table>
-          
+        projected NBA record:<br/> <strong>{winTotal} - {lossTotal}</strong>
       </div>
     )
 } 
