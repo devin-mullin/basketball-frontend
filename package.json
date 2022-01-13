@@ -33,10 +33,10 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "PORT=3006 craco start",
-    "build": "craco build",
-    "test": "craco test",
-    "eject": "craco eject"
+    "start": "PORT=3006 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

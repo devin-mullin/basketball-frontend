@@ -24,7 +24,7 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
               localStorage.setItem("token", data.jwt)
               setUser({
                 username: data.user.username,
-                id: data.user.id
+                id: data.user.id,
               })
             })
             alert("welcome to the GREATEST FANTASY BASKETBALL APP EVER CREATED by me")

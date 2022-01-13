@@ -1,24 +1,20 @@
 import { useSelector, useDispatch } from "react-redux"
 import { useState, useEffect } from "react"
 import Select from 'react-select'
-import { add } from './redux/myTeamSlice'
+import { add, selectMyTeams } from './redux/myTeamSlice'
 import MyTeamDetail from "./MyTeamDetail"
 import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 
 function MyTeam({ user, setSelectedTeam, selectedTeam }){ 
    const [teamName, setTeamName] = useState("");
-    const [list, setList] = useState([])
 
    const dispatch = useDispatch()
    let navigate = useNavigate()
+    const userId = user.id
+    const allTeams = useSelector(selectMyTeams)
+    const myTeams = allTeams[0].filter(team => team.user_id === userId)
 
-   //react select
-//    useEffect(()=>{
-//        fetch('https://localhost:3000/user_teams')
-//    })
-
-   console.log(user);
     const customStyles = {
         option: (provided, state) => ({
             ...provided,
@@ -87,7 +83,7 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
             <h2 className="headers">My Teams</h2> 
             <Select
             className="myteam-select"
-            options={list}
+            options={myTeams}
             styles={customStyles}
             getOptionLabel={(list=>list.name)}
             getOptionValue={list=>list.id}
