@@ -63,7 +63,11 @@ import { useEffect, useState } from 'react'
   }
   let lossCalc = 82 - winTotal
   let lossTotal = parseInt(lossCalc)
- 
+  
+  if(myTeam?.length < 5){
+    winTotal = 0
+    lossTotal = 0
+  }
   
 
     return(
@@ -96,6 +100,7 @@ import { useEffect, useState } from 'react'
         <tbody>
             {myTeam?.map((player)=>(
           <tr key={player.id}>
+          <td>
             <Link 
             className="player-link" 
             to=
@@ -104,6 +109,7 @@ import { useEffect, useState } from 'react'
                 {player?.name}
                 </strong>
             </Link>
+            </td>
               <td>{player?.tm}</td>
               <td>{player?.age}</td>
               <td>{player?.pos}</td>
@@ -130,7 +136,12 @@ import { useEffect, useState } from 'react'
             ))}
         </tbody>
           </Table>
-        projected NBA record:<br/> <strong>{winTotal} - {lossTotal}</strong>
+        <p className="header">
+          projected NBA record:<br/> <strong>{winTotal} - {lossTotal}</strong>
+          <br/>{myTeam?.length < 5 ? "you can't win any games without a starting 5!" : null}
+          <br/>{myTeam?.length >=5 && myTeam?.length < 6 ? "you're gonna make these guys play all 48 minutes? lol" : null}
+          <br/>{myTeam?.length >= 6 && myTeam?.length < 10 ? "fill out your bench a little bit and thank yourself later" : null }
+        </p>
       </div>
     )
 } 
