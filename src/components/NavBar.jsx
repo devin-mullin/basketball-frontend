@@ -9,7 +9,7 @@ function NavBar( { loggedIn } ){
     return(
       <Container>
         <Navbar  
-             className="">
+             className="navbar">
           <Container>
           {loggedIn ?
             <Button variant="outline-info" className="navbar-button"> 

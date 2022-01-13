@@ -58,6 +58,7 @@ html {
   border: 3px solid #c0ffee;
   border-radius: 30px;
   top: 30px; bottom: 30px; left: 0; right: 0;
+  margin-bottom: 75px;
 }
 
 .navbar-link {
@@ -270,7 +271,9 @@ html {
   align-items: center;
   margin: 50px auto;
   display: block;
+  overflow: auto
 }
+
 
 .player-add-button {
   margin: 2px auto;
@@ -389,8 +392,10 @@ html {
 }
 
 .boxscore-layout {
-
+  float: left;
+  width: 33%
 }
+
 
 .player-boxscore-link {
   color: white;

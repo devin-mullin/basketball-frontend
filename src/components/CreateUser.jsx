@@ -15,6 +15,7 @@ function CreateUser(){
             alert('i told you NOT to pick devy. that is MY name. MY name is already TAKEN. here is a list of names that are more appropriate for someone like you, a person who likes to pick names that have already been TAKEN.');
             window.open('https://babynames.com/')
             setUsername("")
+            setPassword("")
         } else {
         fetch("http://localhost:3000/signup", {
           method: "POST",

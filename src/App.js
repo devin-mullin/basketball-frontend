@@ -86,8 +86,8 @@ function App() {
           setLoggedIn={setLoggedIn}
           />
       <br />
-      <NavBar loggedIn={loggedIn}/>
       <Search />
+      <NavBar loggedIn={loggedIn}/>
       <Routes>           
       <Route path='/sign-up' element={<CreateUser/>}/>
       <Route exact path='/nba-teams' element={<NbaTeamsContainer />} />
