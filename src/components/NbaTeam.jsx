@@ -24,7 +24,7 @@ function NbaTeam({ selectedTeam }){
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-            user_team_id: selectedTeam,
+            user_team_id: selectedTeam.id,
             player_id: e.target.id
         }),
     })

@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux'
 import { selectPlayers } from './redux/playerSlice'
+import { selectAllTeams } from './redux/teamSlice'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, Button, Container } from 'react-bootstrap'
@@ -8,7 +9,8 @@ import { Form, Button, Container } from 'react-bootstrap'
 function Search() {
   const [searchText, setSearchText] = useState("") 
   const players = useSelector(selectPlayers)
-  
+  const teams = useSelector(selectAllTeams)
+
   const searchResults = players[0]?.filter(player=> 
     player.name.toLowerCase().includes(searchText.toLowerCase()) 
     || player.name.toLowerCase().startsWith(searchText.toLowerCase()) 
