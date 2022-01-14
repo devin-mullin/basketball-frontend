@@ -391,9 +391,25 @@ html {
   transform: scale(1.05)
 }
 
+.boxscore-outline{
+  text-align: center;
+  color: #c0ffee;
+  border: 1px solid #c0ffee;
+  border-radius: 30px;
+  position: relative;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+  display: block;
+  overflow: auto
+}
+
 .boxscore-layout {
   float: left;
-  width: 33%
+  width: 33%;
+  border-left: 1px solid #c0ffee;
+  border-top: 1px solid #c0ffee;
 }
 
 
