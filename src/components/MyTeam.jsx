@@ -13,6 +13,7 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
    let navigate = useNavigate()
     const userId = user.id
     const allTeams = useSelector(selectMyTeams)
+    console.log(allTeams)
     const myTeams = allTeams[0]?.filter(team => team.user_id === userId)
 
     const customStyles = {
