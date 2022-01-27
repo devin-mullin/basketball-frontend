@@ -18,7 +18,7 @@ function Player({ selectedTeam }){
  
     const handleClick = (e) =>{
         alert(`${e.target.name} added to ${selectedTeam.name}}!`)
-        fetch('http://localhost:3000/user_team_players', {
+        fetch('https://nameless-ravine-11360.herokuapp.com/user_team_players', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

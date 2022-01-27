@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react'
     const dispatch = useDispatch()
 
     useEffect(()=>{
-      fetch(`http://localhost:3000/user_teams/${teamId}`)
+      fetch(`https://nameless-ravine-11360.herokuapp.com/user_teams/${teamId}`)
       .then(r=>r.json())
       .then(data=>setUserTeam(data))
     },[teamId])
@@ -27,7 +27,7 @@ import { useEffect, useState } from 'react'
       const id = parseInt(e.target.id)
       const myTeamPlayers = userTeam?.user_team_players
       const waivedPlayer = myTeamPlayers?.find(player => player.player_id === id);
-      fetch(`http://localhost:3000/user_team_players/${waivedPlayer.id}`, { 
+      fetch(`https://nameless-ravine-11360.herokuapp.com/user_team_players/${waivedPlayer.id}`, { 
         method: 'DELETE',
         body: JSON.stringify({
           user_team_id: 1,

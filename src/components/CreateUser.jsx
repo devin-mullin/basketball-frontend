@@ -17,7 +17,7 @@ function CreateUser(){
             setUsername("")
             setPassword("")
         } else {
-        fetch("http://localhost:3000/signup", {
+        fetch("https://nameless-ravine-11360.herokuapp.com/signup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

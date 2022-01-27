@@ -54,7 +54,7 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
 
    const handleSubmit = (e) =>{
     e.preventDefault();
-    fetch('http://localhost:3000/user_teams', {
+    fetch('https://nameless-ravine-11360.herokuapp.com/user_teams', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

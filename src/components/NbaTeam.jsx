@@ -18,7 +18,7 @@ function NbaTeam({ selectedTeam }){
     alert(`${e.target.name} added to ${selectedTeam.name}!`)
     const player = myTeam.players.filter(player=>player.id == e.target.id)
     console.log(player);
-    fetch('http://localhost:3000/user_team_players', {
+    fetch('https://nameless-ravine-11360.herokuapp.com/user_team_players', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

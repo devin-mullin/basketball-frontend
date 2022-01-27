@@ -10,7 +10,7 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
     function userLogIn(e){
       e.preventDefault()
       setIsLoading(true);
-        fetch("http://localhost:3000/login", {
+        fetch("https://nameless-ravine-11360.herokuapp.com/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -32,7 +32,7 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
             setUsername("")
             setPassword("")
           } else {
-            r.json().then((err)=> setErrors(err.errors))
+           alert('invalid credentials, try again or sign up!')
           }
         })
     }
