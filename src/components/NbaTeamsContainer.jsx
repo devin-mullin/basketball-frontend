@@ -1,8 +1,7 @@
-import NbaTeam from './NbaTeam'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { selectAllTeams } from './redux/teamSlice'
 import { Link } from 'react-router-dom'
-import { Button, Container, Row } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 
 
 function NbaTeamsContainer(){

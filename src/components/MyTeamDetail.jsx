@@ -1,6 +1,5 @@
-import { selectMyTeams, selectMyTeamById, fetchMyTeams, removePlayer } from './redux/myTeamSlice'
 import { remove } from './redux/myTeamPlayerSlice'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useNavigate, Link } from 'react-router-dom'
 import { Table } from 'react-bootstrap'
 import { useEffect, useState } from 'react'

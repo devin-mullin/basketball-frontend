@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import Select from 'react-select'
 import { add, selectMyTeams } from './redux/myTeamSlice'
 import MyTeamDetail from "./MyTeamDetail"
@@ -98,7 +98,7 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
             placeholder= {"Select your team..."}
             onChange={(e)=>setSelectedTeam(e)}
             ></Select>
-             {selectedTeam != '' ?  <MyTeamDetail user={user} teamId={selectedTeam.id}/>
+             {selectedTeam !== '' ?  <MyTeamDetail user={user} teamId={selectedTeam.id}/>
             : null 
             }
 

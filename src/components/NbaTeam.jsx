@@ -1,4 +1,4 @@
-import { selectAllTeams, fetchTeams } from './redux/teamSlice'
+import { selectAllTeams } from './redux/teamSlice'
 import { addPlayer } from './redux/myTeamSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, Link, useNavigate } from 'react-router-dom'
@@ -16,7 +16,7 @@ function NbaTeam({ selectedTeam }){
 
   const handleClick = (e) =>{
     alert(`${e.target.name} added to ${selectedTeam.name}!`)
-    const player = myTeam.players.filter(player=>player.id == e.target.id)
+    const player = myTeam.players.filter(player=>player.id === e.target.id)
     console.log(player);
     fetch('https://nameless-ravine-11360.herokuapp.com/user_team_players', {
         method: 'POST',
