@@ -2,7 +2,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 import { selectPlayers } from './redux/playerSlice'
 import { add } from './redux/myTeamPlayerSlice'
-import config from './config'
 import { Table } from 'react-bootstrap'
 
 
@@ -42,7 +41,7 @@ function Player({ selectedTeam }){
     // video
 
     const searchTerms = `${thisPlayer?.name} + NBA 2021 highlights` 
-    const API_KEY = config.API_KEY
+    const API_KEY = process.env.REACT_APP_API_KEY
     const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${searchTerms}&key=${API_KEY}`;
    
     fetch(url)
