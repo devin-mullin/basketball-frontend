@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { selectAllTeams } from './redux/teamSlice'
 import { Link } from 'react-router-dom'
 import { Button, Container, Row } from 'react-bootstrap'
-import '/home/devin/personal/basketball-mega/basketball-frontend/src/App.css'
 
 
 function NbaTeamsContainer(){
