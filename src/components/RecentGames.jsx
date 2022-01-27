@@ -92,7 +92,7 @@ const apg2Player2Stat = games?.events[1]?.competitions[0]?.competitors[1]?.leade
             <Link 
                     className="player-boxscore-link"
                     to=
-                  {{pathname: `/players/${thisPlayer1.id}`}} 
+                  {{pathname: `/players/${thisPlayer1?.id}`}} 
                    
                    >
                     <strong>
