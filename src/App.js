@@ -24,7 +24,7 @@ function App() {
   const [selectedTeam, setSelectedTeam] = useState([])
 
   useEffect(()=>{
-    fetch('http://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard#')
+    fetch('https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard#')
     .then(r=>r.json())
     .then(data=>getGames(data))
 }, [])
@@ -54,7 +54,7 @@ function App() {
 
   useEffect(()=>{
       dispatch(fetchTeams())    
-  }, [dispatch])
+  }, [])
   
   useEffect(()=>{
     dispatch(fetchPlayers())  

@@ -7,14 +7,14 @@ import { Container } from 'react-bootstrap'
 function NbaTeamsContainer(){
 
     const teams = useSelector(selectAllTeams)
-
+    const teamsSlice = teams[0]?.slice(0, 30)
 
     return(
         <>
         <Container className="teams-container">
-        {teams[0]?.map(team=> 
+        {teamsSlice?.map(team=> 
         <row 
-        md={4}
+        md={1}
         className="justify-content-md-center"
         key={team.id}>
             <button className="team-button"

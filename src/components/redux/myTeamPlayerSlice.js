@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 export const getTeamPlayers = createAsyncThunk(
     "user_team_players/get",
     async (thunkAPI)=> {
-      const response = await fetch('https://nameless-ravine-11360.herokuapp.com/user_team_players').then(
+        const response = await fetch('https://nameless-ravine-11360.herokuapp.com/user_team_players').then(
       (data)=>data.json()
       )
       return response
