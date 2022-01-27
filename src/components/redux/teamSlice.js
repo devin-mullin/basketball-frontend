@@ -6,7 +6,7 @@ let initialState = []
 export const fetchTeams = createAsyncThunk(
         'teams/getTeams',
         async (thunkAPI) => {
-            const res = await fetch('http://localhost:3000/teams').then(
+            const res = await fetch('https://nameless-ravine-11360.herokuapp.com/teams').then(
                 (data) => data.json()
             )
             return res

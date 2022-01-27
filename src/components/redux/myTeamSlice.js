@@ -3,7 +3,7 @@ import { createSlice, createSelector, createAsyncThunk } from '@reduxjs/toolkit'
 export const fetchMyTeams = createAsyncThunk(
     'user_teams/getMyTeams', 
     async (thunkAPI)=> {
-    const response = await fetch('http://localhost:3000/user_teams').then(
+    const response = await fetch('https://nameless-ravine-11360.herokuapp.com/user_teams').then(
     (data)=>data.json()
     )
     return response
