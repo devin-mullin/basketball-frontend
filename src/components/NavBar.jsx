@@ -6,10 +6,10 @@ function NavBar( { loggedIn } ){
 
 
     return(
-      <Container>
+      <Container className="container">
         <Navbar  
              className="navbar">
-          <Container>
+          <Container className="container">
           {loggedIn ?
             <Button variant="outline-info" className="navbar-button"> 
               <Link to='/my-team' className="navbar-link"><strong> My Teams </strong></Link>
