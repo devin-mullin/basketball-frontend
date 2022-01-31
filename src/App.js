@@ -73,6 +73,7 @@ function App() {
   return (
 
       <div className="App">
+        <NavBar loggedIn={loggedIn}/>
       <div className="logo">
         <h1
         alt="devy league fantasy basketball version 0.5"
@@ -80,25 +81,50 @@ function App() {
         style={{cursor: 'pointer'}}
         >devyleague fantasy basketball v0.5</h1> 
       </div>
-      <Login 
-          user={user}
-          setUser={setUser} 
-          loggedIn={loggedIn} 
-          setLoggedIn={setLoggedIn}
-          />
-      <br />
       <Search />
-      <NavBar loggedIn={loggedIn}/>
-      <Routes>           
-      <Route path='/sign-up' element={<CreateUser/>}/>
-      <Route exact path='/nba-teams' element={<NbaTeamsContainer />} />
-      <Route path ='nba-teams/:id' element={<NbaTeam selectedTeam={selectedTeam} />}/>
-      <Route path='/players/:id' element={<Player selectedTeam={selectedTeam}/>}/>
-      <Route path='/my-team' element={<MyTeam user={user} setSelectedTeam={setSelectedTeam} selectedTeam={selectedTeam} />} />
-      <Route path='/community' element={<CommunityTeamsContainer />} />
-       <Route path='/box-scores' element={<RecentGamesContainer games={games}/>} /> 
-        <Route exact path='/players' component={Player}/>
-        <Route path='/players/:id' component={Player}/>
+      <br />
+      
+      <Routes>
+      <Route path='/login' 
+                element={<Login
+                user={user}
+                setUser={setUser} 
+                loggedIn={loggedIn} 
+                setLoggedIn={setLoggedIn}
+      />}/>           
+      <Route 
+            path='/sign-up' 
+            element={<CreateUser/>}/>
+      <Route 
+              exact path='/nba-teams' 
+              element={<NbaTeamsContainer />} />
+      <Route 
+              path ='nba-teams/:id' 
+              element={<NbaTeam 
+                        selectedTeam={selectedTeam} />}/>
+      <Route 
+              path='/players/:id' 
+              element={<Player 
+                        selectedTeam={selectedTeam}/>}/>
+      <Route 
+              path='/my-team' 
+              element={<MyTeam 
+                        user={user} 
+                        setSelectedTeam={setSelectedTeam} 
+                        selectedTeam={selectedTeam} />} />
+      <Route 
+              path='/community' 
+              element={<CommunityTeamsContainer />} />
+       <Route 
+              path='/box-scores' 
+              element={<RecentGamesContainer 
+                        games={games}/>} /> 
+        <Route 
+              exact path='/players' 
+              component={Player}/>
+        <Route 
+              path='/players/:id' 
+              component={Player}/>
       </Routes>
       <br/>
 

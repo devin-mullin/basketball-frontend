@@ -23,10 +23,15 @@ function NavBar( { loggedIn } ){
           <Button variant="outline-info" className="navbar-button">
             <Link to='/box-scores' className="navbar-link"><strong> Today's NBA Matchups </strong></Link>
           </Button>
-          {loggedIn ? null : 
+          {loggedIn ? null :
+          <> 
             <Button variant="outline-info" className="navbar-button">
               <Link to='sign-up' className="navbar-link"><strong> Sign Up </strong></Link>
             </Button>
+            <Button variant="outline-info" className="navbar-button">
+            <Link to='login' className="navbar-link"><strong> Log In </strong></Link>
+            </Button>
+          </>
             
           }
           </Container>
