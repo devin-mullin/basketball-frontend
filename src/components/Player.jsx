@@ -5,7 +5,7 @@ import { add } from './redux/myTeamPlayerSlice'
 import { Table } from 'react-bootstrap'
 
 
-function Player({ selectedTeam }){
+function Player({ selectedTeam, loggedIn }){
    
     let dispatch = useDispatch()
     
@@ -16,6 +16,7 @@ function Player({ selectedTeam }){
     
  
     const handleClick = (e) =>{
+        if(loggedIn === true){
         alert(`${e.target.name} added to ${selectedTeam.name}}!`)
         fetch('https://nameless-ravine-11360.herokuapp.com/user_team_players', {
             method: 'POST',
@@ -35,6 +36,9 @@ function Player({ selectedTeam }){
             .catch((error) => {
             console.error('Error:', error);
             });
+         } else {
+             alert('You need to log in to add players to your teams!')
+            }
                 }
 
 

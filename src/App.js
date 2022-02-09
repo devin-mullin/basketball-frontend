@@ -105,7 +105,8 @@ function App() {
       <Route 
               path='/players/:id' 
               element={<Player 
-                        selectedTeam={selectedTeam}/>}/>
+                        selectedTeam={selectedTeam}
+                        loggedIn={loggedIn}/>}/>
       <Route 
               path='/my-team' 
               element={<MyTeam 

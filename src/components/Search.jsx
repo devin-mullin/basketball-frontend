@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { selectPlayers } from './redux/playerSlice'
 import { selectAllTeams } from './redux/teamSlice'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Form, Button, Container } from 'react-bootstrap'
 
 
@@ -20,7 +20,7 @@ function Search() {
   const handleChange = (e) => {
     setSearchText(e.target.value)
   }
-
+  
  
     return(
     <div className="search-container">
@@ -32,6 +32,7 @@ function Search() {
             id="search"
             name="search"
             placeholder="Search for players..."
+            value={searchText}
             onChange={handleChange}
             />
       {searchText.length < 3 ? null:
@@ -45,7 +46,7 @@ function Search() {
           <p
             className="search-link" 
             key={result.id} 
-            onClick={()=> navigate(`/players/${result.id}`)}>
+            onClick={()=> {navigate(`/players/${result.id}`); setSearchText('')}}>
               <strong>
                 {result.name} <span> | </span> {result.tm}
               </strong>
