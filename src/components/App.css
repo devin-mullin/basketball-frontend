@@ -59,7 +59,9 @@ html {
 
 .navbar-link {
   color: white;
+  margin-top: 15px;
   overflow: hidden;
+  padding-bottom: 0px;
   background: linear-gradient(to right, black, blue 50%, white 50%);
   background-clip: text;
   -webkit-background-clip: text;
@@ -231,7 +233,7 @@ html {
   border: 3px solid #c0ffee;
   border-radius: 10px;
   height: 90px;
-  width: 130px;
+  width: 150px;
   transition: all 250ms ease-in-out;
 }
 
@@ -241,6 +243,7 @@ html {
 
 .team-link {
   color: white;
+  margin-top: 10px;
   overflow: hidden;
   background: linear-gradient(to right, #2acaea, white 50%, #3399ff 50%);
   background-clip: text;

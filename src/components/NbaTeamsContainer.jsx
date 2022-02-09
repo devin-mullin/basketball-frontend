@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { selectAllTeams } from './redux/teamSlice'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Container } from 'react-bootstrap'
 
 
@@ -8,6 +8,7 @@ function NbaTeamsContainer(){
 
     const teams = useSelector(selectAllTeams)
     const teamsSlice = teams[0]?.slice(0, 30)
+    const navigate = useNavigate()
 
     return(
         <>
@@ -18,15 +19,13 @@ function NbaTeamsContainer(){
         className="justify-content-md-center"
         key={team.id}>
             <button className="team-button"
-          
+                    onClick={()=> navigate(`/nba-teams/${team.id}`)}
             >
-            <Link className="team-link" 
-            to={{pathname: `/nba-teams/${team.id}`}}         
-           >
+            <p className="team-link">
                <strong>
                 {team.full_name}
                 </strong>
-            </Link>
+            </p>
             </button>
             </row>)}
         </Container>
