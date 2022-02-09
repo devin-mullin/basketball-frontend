@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { Button, Navbar } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 
 function NavBar( { loggedIn } ){
 
@@ -7,7 +7,7 @@ function NavBar( { loggedIn } ){
 
 
     return(
-        <Navbar  
+        <div 
              className="navbar">
           {loggedIn ?
             <Button variant="outline-info" className="navbar-button" onClick={()=> navigate('/my-team')}> 
@@ -33,7 +33,7 @@ function NavBar( { loggedIn } ){
           </>
             
           }
-        </Navbar>
+        </div>
 
         
     )
