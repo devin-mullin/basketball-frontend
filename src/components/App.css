@@ -52,6 +52,7 @@ html {
 .navbar{
   border: 3px solid #c0ffee;
   border-radius: 30px;
+  justify-content: center;
   top: 30px; bottom: 30px; left: 0; right: 0;
   margin-bottom: 75px;
 }
@@ -472,28 +473,33 @@ and (max-device-width: 1450px) {
 
 } */
  
-/* For Mobile Portrait View */
-/* @media screen and (max-device-width: 467px)
+// For Mobile Portrait View
+@media screen and (-webkjit-min-device-pixel-ratio: 2)
 and (orientation: portrait) {
   
   .navbar{
     display: flex;
-    border: 3px solid #c0ffee;
+    flex-direction: column;
+    border: none;
     text-align: center;
     justify-content: center;
     margin: 0 auto;
+    margin-bottom: 50px !important;
+    width: 100%;
+    top: 0; bottom: 0; left: 0; right: 0;
   }
-  
-  .navbar-link {
-    display: flex;
-  }
+
+
   
   .navbar-link:hover {
     background-position: 0 100%
   }
   
   .navbar-button {
-    transition: all 250ms ease-in-out;
+    transition: none;
+    display: flex;
+    overflow: visible;
+    flex-direction: column;
     margin: 4px;
     color: white;
   }
@@ -609,7 +615,7 @@ and (orientation: portrait) {
     background-position: 0 100%
   }
 
-} */
+} 
  
 /* For Mobile Landscape View */
 /* @media screen and (max-device-width: 900px)
