@@ -13,6 +13,7 @@ function NbaTeam({ selectedTeam }){
   const pgNum = useParams()
   const id = parseInt(pgNum.id)
   const myTeam = teams[0]?.find(team=>team.id === id)
+  const navigate = useNavigate()
 
   const handleClick = (e) =>{
     alert(`${e.target.name} added to ${selectedTeam.name}!`)
@@ -35,7 +36,6 @@ function NbaTeam({ selectedTeam }){
         });
             }
 
-    let navigate = useNavigate()
 
     return(
         <div className="team">
@@ -75,16 +75,14 @@ function NbaTeam({ selectedTeam }){
             myTeam?.players.map((player)=>(
           <tr key={player.id}>
               <td>
-                <Link 
+                <p
                     className="player-link"
-                    to=
-                  {{pathname: `/players/${player.id}`}} 
-                   
+                    onClick={()=> navigate(`/players/${player.id}`)} 
                    >
                     <strong>
                       {player?.name}
                     </strong>
-                </Link>
+                </p>
                 </td>
               <td>{player?.age}</td>
               <td>{player?.pos}</td>

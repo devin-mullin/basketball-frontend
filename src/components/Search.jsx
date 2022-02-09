@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import { selectPlayers } from './redux/playerSlice'
 import { selectAllTeams } from './redux/teamSlice'
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Form, Button, Container } from 'react-bootstrap'
 
 
@@ -10,6 +10,7 @@ function Search() {
   const [searchText, setSearchText] = useState("") 
   const players = useSelector(selectPlayers)
   const teams = useSelector(selectAllTeams)
+  const navigate = useNavigate()
 
   const searchResults = players[0]?.filter(player=> 
     player.name.toLowerCase().includes(searchText.toLowerCase()) 
@@ -19,7 +20,8 @@ function Search() {
   const handleChange = (e) => {
     setSearchText(e.target.value)
   }
-  
+
+ 
     return(
     <div className="search-container">
       <Form className="search">
@@ -40,15 +42,14 @@ function Search() {
          <Button variant="outline-info"
          className="navbar-button"
          >
-          <Link 
+          <p
             className="search-link" 
-            key={result.id}
-            to={{pathname: `/players/${result.id}`}} 
-            onClick={()=>setSearchText('')}>
+            key={result.id} 
+            onClick={()=> navigate(`/players/${result.id}`)}>
               <strong>
                 {result.name} <span> | </span> {result.tm}
               </strong>
-          </Link>
+          </p>
           </Button>
         )}
       </Container>

@@ -50,7 +50,7 @@ html {
 
 
 .navbar{
-  border: 3px solid #c0ffee;
+  border: 1px solid #c0ffee;
   border-radius: 30px;
   justify-content: center;
   top: 30px; bottom: 30px; left: 0; right: 0;
@@ -157,7 +157,7 @@ html {
 
 .input::placeholder{
   color: white;
-  opacity: 0.8
+  opacity: 0.8;
 }
 
 .results {
@@ -173,6 +173,7 @@ html {
 
 .search-link {
   color: white;
+  margin: 0 auto;
   overflow: hidden;
   font-weight: 900;
   background: linear-gradient(to right, black, blue 50%, white 50%);
@@ -276,6 +277,7 @@ html {
 
 .player-add-button {
   margin: 2px auto;
+  margin-top: 10px;
   background: lightblue !important;
   color: black !important; 
   transition: background-color .6s ease;
@@ -305,6 +307,8 @@ html {
 
 .player-link {
   color: black;
+  cursor: pointer;
+  margin-top: 10px;
   text-shadow: 0 0 0 1px blue, 0 0 1px #c0ffee;
   overflow: hidden;
   background: linear-gradient(to right, #2acaea, black 50%, blue 50%);
@@ -324,11 +328,16 @@ html {
  background-color: #c5d2d3;
   display: table;
   border: 1px solid black;
-  border-radius:10px;
+  border-radius: 10px;
   position: relative;
   top: 0; bottom: 0; left: 0; right: 0;
   margin: 50px auto;
   width: 75%
+}
+
+td {
+  text-align: center;
+  vertical-align: middle;
 }
 
 .player-card {
