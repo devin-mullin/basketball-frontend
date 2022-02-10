@@ -138,11 +138,14 @@ import { useEffect, useState } from 'react'
             ))}
         </tbody>
           </Table>
-        <p className="header">
-          projected NBA record:<br/> <strong>{winTotal >= 0 ? <p>{winTotal} - {lossTotal}</p> : <p>0 - 0</p>}</strong>
-          <br/>{myTeam?.length < 5 ? "you can't win any games without a starting 5!" : null}
-          <br/>{myTeam?.length >=5 && myTeam?.length < 6 ? "you're gonna make these guys play all 48 minutes? lol" : null}
-          <br/>{myTeam?.length >= 6 && myTeam?.length < 10 ? "fill out your bench a little bit and thank yourself later" : null }
+        <p className="headers">
+          projected NBA record:
+          <br/>
+          <br/> <h4>{winTotal >= 0 ? <p>{winTotal} - {lossTotal}</p> : <p>0 - 0</p>}</h4>
+          <br/>
+          {myTeam?.length < 5 ? "you can't win any games without a starting 5!" : null}
+          {myTeam?.length >=5 && myTeam?.length < 6 ? "you're gonna make these guys play all 48 minutes? lol" : null}
+          {myTeam?.length >= 6 && myTeam?.length < 10 ? "fill out your bench a little bit and thank yourself later" : null }
         </p>
       </div>
     )
