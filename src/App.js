@@ -81,6 +81,14 @@ function App() {
         style={{cursor: 'pointer'}}
         >devyleague fantasy basketball v0.5</h1> 
       </div>
+      {loggedIn ? <Login 
+        user={user}
+        setUser={setUser} 
+        loggedIn={loggedIn} 
+        setLoggedIn={setLoggedIn}
+      />
+        : null
+    }
       <Search />
       <br />
       

@@ -1,11 +1,14 @@
 import {useState} from 'react'
 import { Form, Button } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 function Login({ user, setUser, loggedIn, setLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  
+  const navigate = useNavigate()
 
     function userLogIn(e){
       e.preventDefault()
@@ -31,6 +34,7 @@ function Login({ user, setUser, loggedIn, setLoggedIn }) {
             setLoggedIn(true);
             setUsername("")
             setPassword("")
+            navigate('/')
           } else {
            alert('invalid credentials, try again or sign up!')
           }
