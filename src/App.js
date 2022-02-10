@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import { fetchTeams } from './components/redux/teamSlice'
 import { fetchPlayers } from './components/redux/playerSlice'
 import { fetchMyTeams } from './components/redux/myTeamSlice'
-
+import nba from './components/img/nba.png'
 
 function App() {
   const [user, setUser] = useState({})
@@ -128,7 +128,12 @@ function App() {
               component={Player}/>
       </Routes>
       <br/>
-
+    <img 
+      src={nba} 
+      onClick={()=>window.open('https://www.nba.com')}
+      alt="link to NBA.com"
+      style={{ cursor: 'pointer' }}
+      />
       </div>
   );
 }

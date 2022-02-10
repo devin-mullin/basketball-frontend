@@ -17,7 +17,7 @@ function Player({ selectedTeam, loggedIn }){
  
     const handleClick = (e) =>{
         if(loggedIn === true){
-        alert(`${e.target.name} added to ${selectedTeam.name}}!`)
+        alert(`${e.target.name} added to ${selectedTeam.name}!`)
         fetch('https://nameless-ravine-11360.herokuapp.com/user_team_players', {
             method: 'POST',
             headers: {

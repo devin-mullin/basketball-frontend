@@ -112,7 +112,8 @@ html {
   text-align: center;
   position: relative;
   top: 30px; bottom: 30px; left: 0; right: 0;
-  margin: 15px auto
+  margin: 15px auto;
+  margin-bottom: 50px;
 }
 
 .label{
@@ -212,7 +213,7 @@ html {
   padding: 10px;
   position: relative;
   top: 0; bottom: 30px; left: 0; right: 0;
-  margin: 50px auto;
+  margin: 25px auto;
 }
 
 

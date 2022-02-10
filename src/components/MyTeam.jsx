@@ -1,20 +1,25 @@
 import { useSelector, useDispatch } from "react-redux"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Select from 'react-select'
-import { add, selectMyTeams } from './redux/myTeamSlice'
+import { add, selectMyTeams, fetchMyTeams } from './redux/myTeamSlice'
 import MyTeamDetail from "./MyTeamDetail"
 import { useNavigate } from 'react-router-dom'
 import { Form, Button } from 'react-bootstrap'
 
 function MyTeam({ user, setSelectedTeam, selectedTeam }){ 
    const [teamName, setTeamName] = useState("");
+    const [teamOptions, setTeamOptions] = useState([])
 
    const dispatch = useDispatch()
    let navigate = useNavigate()
-    const userId = user.id
-    const allTeams = useSelector(selectMyTeams)
-    console.log(allTeams)
-    const myTeams = allTeams[0]?.filter(team => team.user_id === userId)
+   const allTeams = useSelector(selectMyTeams)
+
+    const getMyTeams = () =>{
+        const userId = user.id
+        const myTeams = allTeams[0]?.filter(team => team.user_id === userId)
+        return myTeams 
+    }
+    console.log(getMyTeams())
 
     const customStyles = {
         option: (provided, state) => ({
@@ -71,14 +76,15 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
             name: teamName,
             players: []
         }))
+        alert(`say hello to ${teamName}, the hottest new upstarts in the league`)
         navigate('/')
         navigate('/my-team')
-        alert(`say hello to ${teamName}, the hottest new upstarts in the league`)
         })
         .catch((error) => {
         console.error('Error:', error);
         });
             }
+
 
     return(
         <div className="team">
@@ -91,7 +97,7 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
             <h2 className="headers">My Teams</h2> 
             <Select
             className="myteam-select"
-            options={myTeams}
+            options={getMyTeams()}
             styles={customStyles}
             getOptionLabel={(list=>list.name)}
             getOptionValue={list=>list.id}
