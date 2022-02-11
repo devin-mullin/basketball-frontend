@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux'
 import { selectPlayers } from './redux/playerSlice'
 import { selectAllTeams } from './redux/teamSlice'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Form, Button, Container } from 'react-bootstrap'
 
@@ -21,6 +21,9 @@ function Search() {
     setSearchText(e.target.value)
   }
   
+  useEffect(()=>{
+    setSearchText('')
+  }, [navigate])
  
     return(
     <div className="search-container">
