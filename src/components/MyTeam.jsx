@@ -19,7 +19,6 @@ function MyTeam({ user, setSelectedTeam, selectedTeam }){
         const myTeams = allTeams[0]?.filter(team => team.user_id === userId)
         return myTeams 
     }
-    console.log(getMyTeams())
 
     const customStyles = {
         option: (provided, state) => ({
