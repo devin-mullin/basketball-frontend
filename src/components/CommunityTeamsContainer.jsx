@@ -1,14 +1,11 @@
-import CommunityTeam from './CommunityTeam'
+import CommunityTeam from "./CommunityTeam";
 
-function CommunityTeamsContainer(){
-
-
-    return(
-        <>
-        <h3>community teams go here</h3>
-        <CommunityTeam />
-        </>
-    )
+function CommunityTeamsContainer() {
+  return (
+    <>
+      <CommunityTeam />
+    </>
+  );
 }
 
-export default CommunityTeamsContainer
+export default CommunityTeamsContainer;
