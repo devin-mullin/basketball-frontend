@@ -750,8 +750,50 @@ and (max-device-width: 1450px) {
     text-align: center;
     vertical-align: middle;
   }
-}
 
+  // PLAYER CARDS
+
+  .player-card {
+    border: 3px solid #c0ffee;
+    color: #c0ffee;
+    border-radius: 30px;
+    width: 100%;
+    background-color: black;
+    padding: 50px;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    top: 30px;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: 50px auto;
+  }
+
+  .player-card-add-div {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+  }
+
+  .player-card-add-button {
+    margin: 2px auto;
+    background: white !important;
+    color: black !important;
+    transition: background-color 0.6s ease;
+    border: 3px solid #c0ffee;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .player-card-add-button:hover {
+    transform: scale(1.05);
+    background-color: green !important;
+    color: white !important;
+  }
+}
 /* For Mobile Landscape View */
 /* @media screen and (max-device-width: 900px)
 and (orientation: landscape) {
