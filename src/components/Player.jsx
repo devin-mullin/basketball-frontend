@@ -59,7 +59,7 @@ function Player({ selectedTeam, loggedIn }) {
   let navigate = useNavigate();
 
   return (
-    <div className="player-card">
+    <div className="team">
       <div className="back-button-div">
         <button className="back-button" onClick={() => navigate(-1)}>
           back

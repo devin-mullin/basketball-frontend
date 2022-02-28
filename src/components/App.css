@@ -285,6 +285,7 @@ html {
   margin: 25px auto;
   display: block;
   overflow: auto;
+  padding-bottom: 50px;
 }
 
 .player-add-button {
@@ -662,6 +663,7 @@ and (max-device-width: 1450px) {
     margin: 0px auto;
     display: block;
     overflow: auto;
+    padding-bottom: 50px;
   }
 
   .back-button-div {
