@@ -26,5 +26,6 @@ const nbaGamesDataTable = parsedNbaGameData("scoreboards")[0].
 children[1].children
 
 nbaGamesDataTable.forEach((row)=> {
+    
 
 })
